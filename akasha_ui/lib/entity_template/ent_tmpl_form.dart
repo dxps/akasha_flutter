@@ -97,10 +97,6 @@ class _EntityTmplFormState extends State<EntityTmplForm> {
 
   void _onReorderAttributes(int oldIndex, int newIndex) {
     setState(() {
-      if (newIndex > oldIndex) {
-        newIndex -= 1;
-      }
-
       final item = includedAttributeTmpls.removeAt(oldIndex);
       includedAttributeTmpls.insert(newIndex, item);
     });
@@ -141,9 +137,6 @@ class _EntityTmplFormState extends State<EntityTmplForm> {
 
   void _onReorderOutgoingLinks(int oldIndex, int newIndex) {
     setState(() {
-      if (newIndex > oldIndex) {
-        newIndex -= 1;
-      }
       final item = includedOutLinks.removeAt(oldIndex);
       includedOutLinks.insert(newIndex, item);
     });

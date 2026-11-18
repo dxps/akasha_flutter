@@ -126,7 +126,7 @@ class _LinksTab extends StatelessWidget {
               : ReorderableListView.builder(
                   buildDefaultDragHandles: false,
                   itemCount: outgoingLinks.length,
-                  onReorder: onReorderLinks,
+                  onReorderItem: onReorderLinks,
                   header: Padding(
                     padding: EdgeInsets.only(top: 10, bottom: 6),
                     child: Text(

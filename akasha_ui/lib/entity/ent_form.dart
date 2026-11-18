@@ -387,9 +387,6 @@ class _EntityFormState extends State<EntityForm> {
 
   void _onReorderAttributes(int oldIndex, int newIndex) {
     setState(() {
-      if (newIndex > oldIndex) {
-        newIndex -= 1;
-      }
       final draft = attributeDrafts.removeAt(oldIndex);
       attributeDrafts.insert(newIndex, draft);
     });
@@ -416,9 +413,6 @@ class _EntityFormState extends State<EntityForm> {
 
   void _onReorderOutgoingLinks(int oldIndex, int newIndex) {
     setState(() {
-      if (newIndex > oldIndex) {
-        newIndex -= 1;
-      }
       final item = outgoingLinkDrafts.removeAt(oldIndex);
       outgoingLinkDrafts.insert(newIndex, item);
     });
@@ -835,7 +829,7 @@ class _EntityFormState extends State<EntityForm> {
       physics: shrinkWrap ? const NeverScrollableScrollPhysics() : null,
       buildDefaultDragHandles: false,
       itemCount: attributeDrafts.length,
-      onReorder: _onReorderAttributes,
+      onReorderItem: _onReorderAttributes,
       itemBuilder: (context, index) => _buildAttributeCard(attributeDrafts[index], index),
       proxyDecorator: (child, index, animation) => _buildAttributeDragProxy(attributeDrafts[index], isDarkMode),
     );
@@ -1148,7 +1142,7 @@ class _EntityFormState extends State<EntityForm> {
                 primary: false,
                 buildDefaultDragHandles: false,
                 itemCount: outgoingLinkDrafts.length,
-                onReorder: _onReorderOutgoingLinks,
+                onReorderItem: _onReorderOutgoingLinks,
                 footer: !showIncomingLinks
                     ? null
                     : Column(

@@ -59,7 +59,7 @@ class _AttributesTab extends StatelessWidget {
               : ReorderableListView.builder(
                   buildDefaultDragHandles: false,
                   itemCount: includedAttributeTmpls.length,
-                  onReorder: onReorderAttributes,
+                  onReorderItem: onReorderAttributes,
                   itemBuilder: (context, index) {
                     final attr = includedAttributeTmpls[index];
                     return ReorderableDragStartListener(
