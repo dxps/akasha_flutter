@@ -10,15 +10,15 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import '../protocol.dart' as _i1;
-import 'package:serverpod_client/serverpod_client.dart' as _i2;
-import '../shared/model/value_type.dart' as _i3;
-import '../access_level/access_level.dart' as _i4;
-import 'package:akasha_client/src/protocol/protocol.dart' as _i5;
+import 'package:akasha_client/src/protocol/protocol.dart' as _ivaz2sz9;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
+import '../access_level/access_level.dart' as _il5mdsd7;
+import '../protocol.dart' as _iv35mfmj;
+import '../shared/model/value_type.dart' as _iwjjq1eq;
 
 /// An attribute whose value represents a date.
-abstract class DateAttribute extends _i1.Attribute
-    implements _i2.SerializableModel {
+abstract class DateAttribute extends _iv35mfmj.Attribute
+    implements _isc.SerializableModel, _isc.ProtocolSerialization {
   DateAttribute._({
     this.id,
     required super.name,
@@ -30,56 +30,57 @@ abstract class DateAttribute extends _i1.Attribute
   });
 
   factory DateAttribute({
-    _i2.UuidValue? id,
+    _isc.UuidValue? id,
     required String name,
     String? description,
-    required _i3.ValueType valueType,
+    required _iwjjq1eq.ValueType valueType,
     required DateTime value,
     required int accessLevelId,
-    required _i4.AccessLevel? accessLevel,
+    required _il5mdsd7.AccessLevel? accessLevel,
   }) = _DateAttributeImpl;
 
   factory DateAttribute.fromJson(Map<String, dynamic> jsonSerialization) {
     return DateAttribute(
       id: jsonSerialization['id'] == null
           ? null
-          : _i2.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
+          : _isc.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
       name: jsonSerialization['name'] as String,
       description: jsonSerialization['description'] as String?,
-      valueType: _i3.ValueType.fromJson(
+      valueType: _iwjjq1eq.ValueType.fromJson(
         (jsonSerialization['valueType'] as String),
       ),
-      value: _i2.DateTimeJsonExtension.fromJson(jsonSerialization['value']),
+      value: _isc.DateTimeJsonExtension.fromJson(jsonSerialization['value']),
       accessLevelId: jsonSerialization['accessLevelId'] as int,
       accessLevel: jsonSerialization['accessLevel'] == null
           ? null
-          : _i5.Protocol().deserialize<_i4.AccessLevel>(
+          : _ivaz2sz9.Protocol().deserialize<_il5mdsd7.AccessLevel>(
               jsonSerialization['accessLevel'],
             ),
     );
   }
 
   /// Its unique identifier.
-  _i2.UuidValue? id;
+  _isc.UuidValue? id;
 
   DateTime value;
 
   int accessLevelId;
 
-  _i4.AccessLevel? accessLevel;
+  _il5mdsd7.AccessLevel? accessLevel;
 
   /// Returns a shallow copy of this [DateAttribute]
   /// with some or all fields replaced by the given arguments.
   @override
-  @_i2.useResult
+  @_isc.useResult
   DateAttribute copyWith({
-    Object? id,
+    _isc.UuidValue? id = const _isc.$UndefinedUuidValue(),
     String? name,
     Object? description,
-    _i3.ValueType? valueType,
+    _iwjjq1eq.ValueType? valueType,
     DateTime? value,
     int? accessLevelId,
-    _i4.AccessLevel? accessLevel,
+    _il5mdsd7.AccessLevel? accessLevel =
+        const _UndefinedDateAttribute$accessLevel(),
   });
   @override
   Map<String, dynamic> toJson() {
@@ -96,22 +97,41 @@ abstract class DateAttribute extends _i1.Attribute
   }
 
   @override
+  Map<String, dynamic> toJsonForProtocol() {
+    return {
+      '__className__': 'DateAttribute',
+      if (id != null) 'id': id?.toJson(),
+      'name': name,
+      if (description != null) 'description': description,
+      'valueType': valueType.toJson(),
+      'value': value.toJson(),
+      'accessLevelId': accessLevelId,
+      if (accessLevel != null) 'accessLevel': accessLevel?.toJsonForProtocol(),
+    };
+  }
+
+  @override
   String toString() {
-    return _i2.SerializationManager.encode(this);
+    return _isc.SerializationManager.encode(this);
   }
 }
 
 class _Undefined {}
 
+class _UndefinedDateAttribute$accessLevel extends _isc.UndefinedSentinel
+    implements _il5mdsd7.AccessLevel {
+  const _UndefinedDateAttribute$accessLevel();
+}
+
 class _DateAttributeImpl extends DateAttribute {
   _DateAttributeImpl({
-    _i2.UuidValue? id,
+    _isc.UuidValue? id,
     required String name,
     String? description,
-    required _i3.ValueType valueType,
+    required _iwjjq1eq.ValueType valueType,
     required DateTime value,
     required int accessLevelId,
-    required _i4.AccessLevel? accessLevel,
+    required _il5mdsd7.AccessLevel? accessLevel,
   }) : super._(
          id: id,
          name: name,
@@ -124,27 +144,28 @@ class _DateAttributeImpl extends DateAttribute {
 
   /// Returns a shallow copy of this [DateAttribute]
   /// with some or all fields replaced by the given arguments.
-  @_i2.useResult
+  @_isc.useResult
   @override
   DateAttribute copyWith({
-    Object? id = _Undefined,
+    _isc.UuidValue? id = const _isc.$UndefinedUuidValue(),
     String? name,
     Object? description = _Undefined,
-    _i3.ValueType? valueType,
+    _iwjjq1eq.ValueType? valueType,
     DateTime? value,
     int? accessLevelId,
-    Object? accessLevel = _Undefined,
+    _il5mdsd7.AccessLevel? accessLevel =
+        const _UndefinedDateAttribute$accessLevel(),
   }) {
     return DateAttribute(
-      id: id is _i2.UuidValue? ? id : this.id,
+      id: id is _isc.UndefinedSentinel ? this.id : id,
       name: name ?? this.name,
       description: description is String? ? description : this.description,
       valueType: valueType ?? this.valueType,
       value: value ?? this.value,
       accessLevelId: accessLevelId ?? this.accessLevelId,
-      accessLevel: accessLevel is _i4.AccessLevel?
-          ? accessLevel
-          : this.accessLevel?.copyWith(),
+      accessLevel: accessLevel is _isc.UndefinedSentinel
+          ? this.accessLevel?.copyWith()
+          : accessLevel,
     );
   }
 }

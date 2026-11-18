@@ -10,12 +10,12 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod/serverpod.dart' as _i1;
-import '../entity_template/entity_tmpl.dart' as _i2;
-import 'package:akasha_server/src/generated/protocol.dart' as _i3;
+import 'package:akasha_server/src/generated/protocol.dart' as _ijew7ys9;
+import 'package:serverpod/serverpod.dart' as _is;
+import '../entity_template/entity_tmpl.dart' as _ik3dvlmp;
 
 abstract class EntityTmplApiResponse
-    implements _i1.SerializableModel, _i1.ProtocolSerialization {
+    implements _is.SerializableModel, _is.ProtocolSerialization {
   EntityTmplApiResponse._({
     required this.success,
     this.data,
@@ -25,7 +25,7 @@ abstract class EntityTmplApiResponse
 
   factory EntityTmplApiResponse({
     required bool success,
-    _i2.EntityTmpl? data,
+    _ik3dvlmp.EntityTmpl? data,
     String? errorCode,
     String? errorMessage,
   }) = _EntityTmplApiResponseImpl;
@@ -34,10 +34,10 @@ abstract class EntityTmplApiResponse
     Map<String, dynamic> jsonSerialization,
   ) {
     return EntityTmplApiResponse(
-      success: _i1.BoolJsonExtension.fromJson(jsonSerialization['success']),
+      success: _is.BoolJsonExtension.fromJson(jsonSerialization['success']),
       data: jsonSerialization['data'] == null
           ? null
-          : _i3.Protocol().deserialize<_i2.EntityTmpl>(
+          : _ijew7ys9.Protocol().deserialize<_ik3dvlmp.EntityTmpl>(
               jsonSerialization['data'],
             ),
       errorCode: jsonSerialization['errorCode'] as String?,
@@ -47,7 +47,7 @@ abstract class EntityTmplApiResponse
 
   bool success;
 
-  _i2.EntityTmpl? data;
+  _ik3dvlmp.EntityTmpl? data;
 
   String? errorCode;
 
@@ -55,10 +55,10 @@ abstract class EntityTmplApiResponse
 
   /// Returns a shallow copy of this [EntityTmplApiResponse]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_is.useResult
   EntityTmplApiResponse copyWith({
     bool? success,
-    _i2.EntityTmpl? data,
+    _ik3dvlmp.EntityTmpl? data = const _UndefinedEntityTmplApiResponse$data(),
     String? errorCode,
     String? errorMessage,
   });
@@ -86,16 +86,21 @@ abstract class EntityTmplApiResponse
 
   @override
   String toString() {
-    return _i1.SerializationManager.encode(this);
+    return _is.SerializationManager.encode(this);
   }
 }
 
 class _Undefined {}
 
+class _UndefinedEntityTmplApiResponse$data extends _is.UndefinedSentinel
+    implements _ik3dvlmp.EntityTmpl {
+  const _UndefinedEntityTmplApiResponse$data();
+}
+
 class _EntityTmplApiResponseImpl extends EntityTmplApiResponse {
   _EntityTmplApiResponseImpl({
     required bool success,
-    _i2.EntityTmpl? data,
+    _ik3dvlmp.EntityTmpl? data,
     String? errorCode,
     String? errorMessage,
   }) : super._(
@@ -107,17 +112,17 @@ class _EntityTmplApiResponseImpl extends EntityTmplApiResponse {
 
   /// Returns a shallow copy of this [EntityTmplApiResponse]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_is.useResult
   @override
   EntityTmplApiResponse copyWith({
     bool? success,
-    Object? data = _Undefined,
+    _ik3dvlmp.EntityTmpl? data = const _UndefinedEntityTmplApiResponse$data(),
     Object? errorCode = _Undefined,
     Object? errorMessage = _Undefined,
   }) {
     return EntityTmplApiResponse(
       success: success ?? this.success,
-      data: data is _i2.EntityTmpl? ? data : this.data?.copyWith(),
+      data: data is _is.UndefinedSentinel ? this.data?.copyWith() : data,
       errorCode: errorCode is String? ? errorCode : this.errorCode,
       errorMessage: errorMessage is String? ? errorMessage : this.errorMessage,
     );

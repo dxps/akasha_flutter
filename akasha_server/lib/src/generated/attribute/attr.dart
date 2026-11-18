@@ -10,13 +10,13 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import '../protocol.dart' as _i1;
-import 'package:serverpod/serverpod.dart' as _i2;
-import '../shared/model/value_type.dart' as _i3;
+import 'package:serverpod/serverpod.dart' as _is;
+import '../protocol.dart' as _iv35mfmj;
+import '../shared/model/value_type.dart' as _iwjjq1eq;
 
 /// The base class for all attributes.
-class Attribute extends _i1.HasId
-    implements _i2.SerializableModel, _i2.ProtocolSerialization {
+class Attribute extends _iv35mfmj.HasId
+    implements _is.SerializableModel, _is.ProtocolSerialization {
   Attribute({
     super.id,
     required this.name,
@@ -28,10 +28,10 @@ class Attribute extends _i1.HasId
     return Attribute(
       id: jsonSerialization['id'] == null
           ? null
-          : _i2.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
+          : _is.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
       name: jsonSerialization['name'] as String,
       description: jsonSerialization['description'] as String?,
-      valueType: _i3.ValueType.fromJson(
+      valueType: _iwjjq1eq.ValueType.fromJson(
         (jsonSerialization['valueType'] as String),
       ),
     );
@@ -41,19 +41,19 @@ class Attribute extends _i1.HasId
 
   String? description;
 
-  _i3.ValueType valueType;
+  _iwjjq1eq.ValueType valueType;
 
   /// Returns a shallow copy of this [Attribute]
   /// with some or all fields replaced by the given arguments.
-  @_i2.useResult
+  @_is.useResult
   Attribute copyWith({
-    Object? id = _Undefined,
+    _is.UuidValue? id = const _is.$UndefinedUuidValue(),
     String? name,
     Object? description = _Undefined,
-    _i3.ValueType? valueType,
+    _iwjjq1eq.ValueType? valueType,
   }) {
     return Attribute(
-      id: id is _i2.UuidValue? ? id : this.id,
+      id: id is _is.UndefinedSentinel ? this.id : id,
       name: name ?? this.name,
       description: description is String? ? description : this.description,
       valueType: valueType ?? this.valueType,
@@ -84,7 +84,7 @@ class Attribute extends _i1.HasId
 
   @override
   String toString() {
-    return _i2.SerializationManager.encode(this);
+    return _is.SerializationManager.encode(this);
   }
 }
 

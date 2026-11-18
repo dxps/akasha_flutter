@@ -10,11 +10,12 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../attribute_template/attr_tmpl.dart' as _i2;
-import 'package:akasha_client/src/protocol/protocol.dart' as _i3;
+import 'package:akasha_client/src/protocol/protocol.dart' as _ivaz2sz9;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
+import '../attribute_template/attr_tmpl.dart' as _iruhiivg;
 
-abstract class AttributeTmplApiResponse implements _i1.SerializableModel {
+abstract class AttributeTmplApiResponse
+    implements _isc.SerializableModel, _isc.ProtocolSerialization {
   AttributeTmplApiResponse._({
     required this.success,
     this.data,
@@ -24,7 +25,7 @@ abstract class AttributeTmplApiResponse implements _i1.SerializableModel {
 
   factory AttributeTmplApiResponse({
     required bool success,
-    _i2.AttributeTmpl? data,
+    _iruhiivg.AttributeTmpl? data,
     String? errorCode,
     String? errorMessage,
   }) = _AttributeTmplApiResponseImpl;
@@ -33,10 +34,10 @@ abstract class AttributeTmplApiResponse implements _i1.SerializableModel {
     Map<String, dynamic> jsonSerialization,
   ) {
     return AttributeTmplApiResponse(
-      success: _i1.BoolJsonExtension.fromJson(jsonSerialization['success']),
+      success: _isc.BoolJsonExtension.fromJson(jsonSerialization['success']),
       data: jsonSerialization['data'] == null
           ? null
-          : _i3.Protocol().deserialize<_i2.AttributeTmpl>(
+          : _ivaz2sz9.Protocol().deserialize<_iruhiivg.AttributeTmpl>(
               jsonSerialization['data'],
             ),
       errorCode: jsonSerialization['errorCode'] as String?,
@@ -46,7 +47,7 @@ abstract class AttributeTmplApiResponse implements _i1.SerializableModel {
 
   bool success;
 
-  _i2.AttributeTmpl? data;
+  _iruhiivg.AttributeTmpl? data;
 
   String? errorCode;
 
@@ -54,10 +55,11 @@ abstract class AttributeTmplApiResponse implements _i1.SerializableModel {
 
   /// Returns a shallow copy of this [AttributeTmplApiResponse]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   AttributeTmplApiResponse copyWith({
     bool? success,
-    _i2.AttributeTmpl? data,
+    _iruhiivg.AttributeTmpl? data =
+        const _UndefinedAttributeTmplApiResponse$data(),
     String? errorCode,
     String? errorMessage,
   });
@@ -73,17 +75,33 @@ abstract class AttributeTmplApiResponse implements _i1.SerializableModel {
   }
 
   @override
+  Map<String, dynamic> toJsonForProtocol() {
+    return {
+      '__className__': 'AttributeTmplApiResponse',
+      'success': success,
+      if (data != null) 'data': data?.toJsonForProtocol(),
+      if (errorCode != null) 'errorCode': errorCode,
+      if (errorMessage != null) 'errorMessage': errorMessage,
+    };
+  }
+
+  @override
   String toString() {
-    return _i1.SerializationManager.encode(this);
+    return _isc.SerializationManager.encode(this);
   }
 }
 
 class _Undefined {}
 
+class _UndefinedAttributeTmplApiResponse$data extends _isc.UndefinedSentinel
+    implements _iruhiivg.AttributeTmpl {
+  const _UndefinedAttributeTmplApiResponse$data();
+}
+
 class _AttributeTmplApiResponseImpl extends AttributeTmplApiResponse {
   _AttributeTmplApiResponseImpl({
     required bool success,
-    _i2.AttributeTmpl? data,
+    _iruhiivg.AttributeTmpl? data,
     String? errorCode,
     String? errorMessage,
   }) : super._(
@@ -95,17 +113,18 @@ class _AttributeTmplApiResponseImpl extends AttributeTmplApiResponse {
 
   /// Returns a shallow copy of this [AttributeTmplApiResponse]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   @override
   AttributeTmplApiResponse copyWith({
     bool? success,
-    Object? data = _Undefined,
+    _iruhiivg.AttributeTmpl? data =
+        const _UndefinedAttributeTmplApiResponse$data(),
     Object? errorCode = _Undefined,
     Object? errorMessage = _Undefined,
   }) {
     return AttributeTmplApiResponse(
       success: success ?? this.success,
-      data: data is _i2.AttributeTmpl? ? data : this.data?.copyWith(),
+      data: data is _isc.UndefinedSentinel ? this.data?.copyWith() : data,
       errorCode: errorCode is String? ? errorCode : this.errorCode,
       errorMessage: errorMessage is String? ? errorMessage : this.errorMessage,
     );

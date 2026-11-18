@@ -10,12 +10,13 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../entity_template/entity_tmpl.dart' as _i2;
-import '../attribute_template/attr_tmpl.dart' as _i3;
-import 'package:akasha_client/src/protocol/protocol.dart' as _i4;
+import 'package:akasha_client/src/protocol/protocol.dart' as _ivaz2sz9;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
+import '../attribute_template/attr_tmpl.dart' as _iruhiivg;
+import '../entity_template/entity_tmpl.dart' as _ik3dvlmp;
 
-abstract class EntityTmplAttribute implements _i1.SerializableModel {
+abstract class EntityTmplAttribute
+    implements _isc.SerializableModel, _isc.ProtocolSerialization {
   EntityTmplAttribute._({
     this.id,
     required this.entityTmplId,
@@ -27,30 +28,30 @@ abstract class EntityTmplAttribute implements _i1.SerializableModel {
 
   factory EntityTmplAttribute({
     int? id,
-    required _i1.UuidValue entityTmplId,
-    _i2.EntityTmpl? entityTmpl,
-    required _i1.UuidValue attributeTmplId,
-    _i3.AttributeTmpl? attributeTmpl,
+    required _isc.UuidValue entityTmplId,
+    _ik3dvlmp.EntityTmpl? entityTmpl,
+    required _isc.UuidValue attributeTmplId,
+    _iruhiivg.AttributeTmpl? attributeTmpl,
     required int orderIdx,
   }) = _EntityTmplAttributeImpl;
 
   factory EntityTmplAttribute.fromJson(Map<String, dynamic> jsonSerialization) {
     return EntityTmplAttribute(
       id: jsonSerialization['id'] as int?,
-      entityTmplId: _i1.UuidValueJsonExtension.fromJson(
+      entityTmplId: _isc.UuidValueJsonExtension.fromJson(
         jsonSerialization['entityTmplId'],
       ),
       entityTmpl: jsonSerialization['entityTmpl'] == null
           ? null
-          : _i4.Protocol().deserialize<_i2.EntityTmpl>(
+          : _ivaz2sz9.Protocol().deserialize<_ik3dvlmp.EntityTmpl>(
               jsonSerialization['entityTmpl'],
             ),
-      attributeTmplId: _i1.UuidValueJsonExtension.fromJson(
+      attributeTmplId: _isc.UuidValueJsonExtension.fromJson(
         jsonSerialization['attributeTmplId'],
       ),
       attributeTmpl: jsonSerialization['attributeTmpl'] == null
           ? null
-          : _i4.Protocol().deserialize<_i3.AttributeTmpl>(
+          : _ivaz2sz9.Protocol().deserialize<_iruhiivg.AttributeTmpl>(
               jsonSerialization['attributeTmpl'],
             ),
       orderIdx: jsonSerialization['orderIdx'] as int,
@@ -62,25 +63,27 @@ abstract class EntityTmplAttribute implements _i1.SerializableModel {
   /// the id will be null.
   int? id;
 
-  _i1.UuidValue entityTmplId;
+  _isc.UuidValue entityTmplId;
 
-  _i2.EntityTmpl? entityTmpl;
+  _ik3dvlmp.EntityTmpl? entityTmpl;
 
-  _i1.UuidValue attributeTmplId;
+  _isc.UuidValue attributeTmplId;
 
-  _i3.AttributeTmpl? attributeTmpl;
+  _iruhiivg.AttributeTmpl? attributeTmpl;
 
   int orderIdx;
 
   /// Returns a shallow copy of this [EntityTmplAttribute]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   EntityTmplAttribute copyWith({
     int? id,
-    _i1.UuidValue? entityTmplId,
-    _i2.EntityTmpl? entityTmpl,
-    _i1.UuidValue? attributeTmplId,
-    _i3.AttributeTmpl? attributeTmpl,
+    _isc.UuidValue? entityTmplId,
+    _ik3dvlmp.EntityTmpl? entityTmpl =
+        const _UndefinedEntityTmplAttribute$entityTmpl(),
+    _isc.UuidValue? attributeTmplId,
+    _iruhiivg.AttributeTmpl? attributeTmpl =
+        const _UndefinedEntityTmplAttribute$attributeTmpl(),
     int? orderIdx,
   });
   @override
@@ -97,20 +100,44 @@ abstract class EntityTmplAttribute implements _i1.SerializableModel {
   }
 
   @override
+  Map<String, dynamic> toJsonForProtocol() {
+    return {
+      '__className__': 'EntityTmplAttribute',
+      if (id != null) 'id': id,
+      'entityTmplId': entityTmplId.toJson(),
+      if (entityTmpl != null) 'entityTmpl': entityTmpl?.toJsonForProtocol(),
+      'attributeTmplId': attributeTmplId.toJson(),
+      if (attributeTmpl != null)
+        'attributeTmpl': attributeTmpl?.toJsonForProtocol(),
+      'orderIdx': orderIdx,
+    };
+  }
+
+  @override
   String toString() {
-    return _i1.SerializationManager.encode(this);
+    return _isc.SerializationManager.encode(this);
   }
 }
 
 class _Undefined {}
 
+class _UndefinedEntityTmplAttribute$entityTmpl extends _isc.UndefinedSentinel
+    implements _ik3dvlmp.EntityTmpl {
+  const _UndefinedEntityTmplAttribute$entityTmpl();
+}
+
+class _UndefinedEntityTmplAttribute$attributeTmpl extends _isc.UndefinedSentinel
+    implements _iruhiivg.AttributeTmpl {
+  const _UndefinedEntityTmplAttribute$attributeTmpl();
+}
+
 class _EntityTmplAttributeImpl extends EntityTmplAttribute {
   _EntityTmplAttributeImpl({
     int? id,
-    required _i1.UuidValue entityTmplId,
-    _i2.EntityTmpl? entityTmpl,
-    required _i1.UuidValue attributeTmplId,
-    _i3.AttributeTmpl? attributeTmpl,
+    required _isc.UuidValue entityTmplId,
+    _ik3dvlmp.EntityTmpl? entityTmpl,
+    required _isc.UuidValue attributeTmplId,
+    _iruhiivg.AttributeTmpl? attributeTmpl,
     required int orderIdx,
   }) : super._(
          id: id,
@@ -123,26 +150,28 @@ class _EntityTmplAttributeImpl extends EntityTmplAttribute {
 
   /// Returns a shallow copy of this [EntityTmplAttribute]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   @override
   EntityTmplAttribute copyWith({
     Object? id = _Undefined,
-    _i1.UuidValue? entityTmplId,
-    Object? entityTmpl = _Undefined,
-    _i1.UuidValue? attributeTmplId,
-    Object? attributeTmpl = _Undefined,
+    _isc.UuidValue? entityTmplId,
+    _ik3dvlmp.EntityTmpl? entityTmpl =
+        const _UndefinedEntityTmplAttribute$entityTmpl(),
+    _isc.UuidValue? attributeTmplId,
+    _iruhiivg.AttributeTmpl? attributeTmpl =
+        const _UndefinedEntityTmplAttribute$attributeTmpl(),
     int? orderIdx,
   }) {
     return EntityTmplAttribute(
       id: id is int? ? id : this.id,
       entityTmplId: entityTmplId ?? this.entityTmplId,
-      entityTmpl: entityTmpl is _i2.EntityTmpl?
-          ? entityTmpl
-          : this.entityTmpl?.copyWith(),
+      entityTmpl: entityTmpl is _isc.UndefinedSentinel
+          ? this.entityTmpl?.copyWith()
+          : entityTmpl,
       attributeTmplId: attributeTmplId ?? this.attributeTmplId,
-      attributeTmpl: attributeTmpl is _i3.AttributeTmpl?
-          ? attributeTmpl
-          : this.attributeTmpl?.copyWith(),
+      attributeTmpl: attributeTmpl is _isc.UndefinedSentinel
+          ? this.attributeTmpl?.copyWith()
+          : attributeTmpl,
       orderIdx: orderIdx ?? this.orderIdx,
     );
   }

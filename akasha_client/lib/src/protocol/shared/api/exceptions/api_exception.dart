@@ -10,10 +10,13 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
 
 abstract class ApiException
-    implements _i1.SerializableException, _i1.SerializableModel {
+    implements
+        _isc.SerializableException,
+        _isc.SerializableModel,
+        _isc.ProtocolSerialization {
   ApiException._({
     required this.errorCode,
     required this.message,
@@ -37,13 +40,22 @@ abstract class ApiException
 
   /// Returns a shallow copy of this [ApiException]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   ApiException copyWith({
     String? errorCode,
     String? message,
   });
   @override
   Map<String, dynamic> toJson() {
+    return {
+      '__className__': 'ApiException',
+      'errorCode': errorCode,
+      'message': message,
+    };
+  }
+
+  @override
+  Map<String, dynamic> toJsonForProtocol() {
     return {
       '__className__': 'ApiException',
       'errorCode': errorCode,
@@ -68,7 +80,7 @@ class _ApiExceptionImpl extends ApiException {
 
   /// Returns a shallow copy of this [ApiException]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   @override
   ApiException copyWith({
     String? errorCode,

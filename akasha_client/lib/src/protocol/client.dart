@@ -10,64 +10,68 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'dart:async' as _i2;
-import 'package:akasha_client/src/protocol/access_level/access_level_api_resp.dart'
-    as _i3;
+import 'dart:async' as _ida;
 import 'package:akasha_client/src/protocol/access_level/access_level.dart'
-    as _i4;
-import 'package:akasha_client/src/protocol/attribute_template/attr_tmpl_api_resp.dart'
-    as _i5;
+    as _ijggy5an;
+import 'package:akasha_client/src/protocol/access_level/access_level_api_resp.dart'
+    as _izrhx0u5;
 import 'package:akasha_client/src/protocol/attribute_template/attr_tmpl.dart'
-    as _i6;
-import 'package:serverpod_auth_idp_client/serverpod_auth_idp_client.dart'
-    as _i7;
-import 'package:serverpod_auth_core_client/serverpod_auth_core_client.dart'
-    as _i8;
-import 'package:akasha_client/src/protocol/entity/ent.dart' as _i9;
-import 'package:akasha_client/src/protocol/entity/ent_api_resp.dart' as _i10;
+    as _i6vv1x04;
+import 'package:akasha_client/src/protocol/attribute_template/attr_tmpl_api_resp.dart'
+    as _i6j65rny;
+import 'package:akasha_client/src/protocol/entity/ent.dart' as _izal7be4;
+import 'package:akasha_client/src/protocol/entity/ent_api_resp.dart'
+    as _ic7nyn7t;
 import 'package:akasha_client/src/protocol/entity_template/entity_tmpl.dart'
-    as _i11;
+    as _iwm1c1te;
 import 'package:akasha_client/src/protocol/entity_template/entity_tmpl_api_resp.dart'
-    as _i12;
-import 'protocol.dart' as _i13;
+    as _i82zt74k;
+import 'package:http/http.dart' as _i85jenna;
+import 'package:serverpod_auth_core_client/serverpod_auth_core_client.dart'
+    as _iacc;
+import 'package:serverpod_auth_idp_client/serverpod_auth_idp_client.dart'
+    as _iaic;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
+import 'protocol.dart' as _il2as5qe;
 
 /// {@category Endpoint}
-class EndpointAccessLevel extends _i1.EndpointRef {
-  EndpointAccessLevel(_i1.EndpointCaller caller) : super(caller);
+class EndpointAccessLevel extends _isc.EndpointRef {
+  EndpointAccessLevel(_isc.EndpointCaller caller) : super(caller);
 
   @override
   String get name => 'accessLevel';
 
-  _i2.Future<_i3.AccessLevelApiResponse> create(_i4.AccessLevel data) =>
-      caller.callServerEndpoint<_i3.AccessLevelApiResponse>(
-        'accessLevel',
-        'create',
-        {'data': data},
-      );
+  _ida.Future<_izrhx0u5.AccessLevelApiResponse> create(
+    _ijggy5an.AccessLevel data,
+  ) => caller.callServerEndpoint<_izrhx0u5.AccessLevelApiResponse>(
+    'accessLevel',
+    'create',
+    {'data': data},
+  );
 
-  _i2.Future<_i4.AccessLevel?> read(int id) =>
-      caller.callServerEndpoint<_i4.AccessLevel?>(
+  _ida.Future<_ijggy5an.AccessLevel?> read(int id) =>
+      caller.callServerEndpoint<_ijggy5an.AccessLevel?>(
         'accessLevel',
         'read',
         {'id': id},
       );
 
-  _i2.Future<List<_i4.AccessLevel>> readAll() =>
-      caller.callServerEndpoint<List<_i4.AccessLevel>>(
+  _ida.Future<List<_ijggy5an.AccessLevel>> readAll() =>
+      caller.callServerEndpoint<List<_ijggy5an.AccessLevel>>(
         'accessLevel',
         'readAll',
         {},
       );
 
-  _i2.Future<_i3.AccessLevelApiResponse> update(_i4.AccessLevel data) =>
-      caller.callServerEndpoint<_i3.AccessLevelApiResponse>(
-        'accessLevel',
-        'update',
-        {'data': data},
-      );
+  _ida.Future<_izrhx0u5.AccessLevelApiResponse> update(
+    _ijggy5an.AccessLevel data,
+  ) => caller.callServerEndpoint<_izrhx0u5.AccessLevelApiResponse>(
+    'accessLevel',
+    'update',
+    {'data': data},
+  );
 
-  _i2.Future<bool> delete(int id) => caller.callServerEndpoint<bool>(
+  _ida.Future<bool> delete(int id) => caller.callServerEndpoint<bool>(
     'accessLevel',
     'delete',
     {'id': id},
@@ -75,53 +79,56 @@ class EndpointAccessLevel extends _i1.EndpointRef {
 }
 
 /// {@category Endpoint}
-class EndpointAttrTmpls extends _i1.EndpointRef {
-  EndpointAttrTmpls(_i1.EndpointCaller caller) : super(caller);
+class EndpointAttrTmpls extends _isc.EndpointRef {
+  EndpointAttrTmpls(_isc.EndpointCaller caller) : super(caller);
 
   @override
   String get name => 'attrTmpls';
 
-  _i2.Future<_i5.AttributeTmplApiResponse> create(_i6.AttributeTmpl data) =>
-      caller.callServerEndpoint<_i5.AttributeTmplApiResponse>(
-        'attrTmpls',
-        'create',
-        {'data': data},
-      );
+  _ida.Future<_i6j65rny.AttributeTmplApiResponse> create(
+    _i6vv1x04.AttributeTmpl data,
+  ) => caller.callServerEndpoint<_i6j65rny.AttributeTmplApiResponse>(
+    'attrTmpls',
+    'create',
+    {'data': data},
+  );
 
-  _i2.Future<_i6.AttributeTmpl?> read(_i1.UuidValue id) =>
-      caller.callServerEndpoint<_i6.AttributeTmpl?>(
+  _ida.Future<_i6vv1x04.AttributeTmpl?> read(_isc.UuidValue id) =>
+      caller.callServerEndpoint<_i6vv1x04.AttributeTmpl?>(
         'attrTmpls',
         'read',
         {'id': id},
       );
 
-  _i2.Future<List<_i6.AttributeTmpl>> readAll() =>
-      caller.callServerEndpoint<List<_i6.AttributeTmpl>>(
+  _ida.Future<List<_i6vv1x04.AttributeTmpl>> readAll() =>
+      caller.callServerEndpoint<List<_i6vv1x04.AttributeTmpl>>(
         'attrTmpls',
         'readAll',
         {},
       );
 
-  _i2.Future<_i5.AttributeTmplApiResponse> update(_i6.AttributeTmpl data) =>
-      caller.callServerEndpoint<_i5.AttributeTmplApiResponse>(
-        'attrTmpls',
-        'update',
-        {'data': data},
-      );
-
-  _i2.Future<bool> delete(_i1.UuidValue id) => caller.callServerEndpoint<bool>(
+  _ida.Future<_i6j65rny.AttributeTmplApiResponse> update(
+    _i6vv1x04.AttributeTmpl data,
+  ) => caller.callServerEndpoint<_i6j65rny.AttributeTmplApiResponse>(
     'attrTmpls',
-    'delete',
-    {'id': id},
+    'update',
+    {'data': data},
   );
+
+  _ida.Future<bool> delete(_isc.UuidValue id) =>
+      caller.callServerEndpoint<bool>(
+        'attrTmpls',
+        'delete',
+        {'id': id},
+      );
 }
 
 /// By extending [EmailIdpBaseEndpoint], the email identity provider endpoints
 /// are made available on the server and enable the corresponding sign-in widget
 /// on the client.
 /// {@category Endpoint}
-class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
-  EndpointEmailIdp(_i1.EndpointCaller caller) : super(caller);
+class EndpointEmailIdp extends _iaic.EndpointEmailIdpBase {
+  EndpointEmailIdp(_isc.EndpointCaller caller) : super(caller);
 
   @override
   String get name => 'emailIdp';
@@ -136,10 +143,10 @@ class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
   ///
   /// Throws an [AuthUserBlockedException] if the auth user is blocked.
   @override
-  _i2.Future<_i8.AuthSuccess> login({
+  _ida.Future<_iacc.AuthSuccess> login({
     required String email,
     required String password,
-  }) => caller.callServerEndpoint<_i8.AuthSuccess>(
+  }) => caller.callServerEndpoint<_iacc.AuthSuccess>(
     'emailIdp',
     'login',
     {
@@ -159,8 +166,8 @@ class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
   /// registration. If the email is already registered, the returned ID will not
   /// be valid.
   @override
-  _i2.Future<_i1.UuidValue> startRegistration({required String email}) =>
-      caller.callServerEndpoint<_i1.UuidValue>(
+  _ida.Future<_isc.UuidValue> startRegistration({required String email}) =>
+      caller.callServerEndpoint<_isc.UuidValue>(
         'emailIdp',
         'startRegistration',
         {'email': email},
@@ -177,8 +184,8 @@ class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
   /// - [EmailAccountRequestExceptionReason.invalid] if no request exists
   ///   for the given [accountRequestId] or [verificationCode] is invalid.
   @override
-  _i2.Future<String> verifyRegistrationCode({
-    required _i1.UuidValue accountRequestId,
+  _ida.Future<String> verifyRegistrationCode({
+    required _isc.UuidValue accountRequestId,
     required String verificationCode,
   }) => caller.callServerEndpoint<String>(
     'emailIdp',
@@ -204,10 +211,10 @@ class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
   ///
   /// Returns a session for the newly created user.
   @override
-  _i2.Future<_i8.AuthSuccess> finishRegistration({
+  _ida.Future<_iacc.AuthSuccess> finishRegistration({
     required String registrationToken,
     required String password,
-  }) => caller.callServerEndpoint<_i8.AuthSuccess>(
+  }) => caller.callServerEndpoint<_iacc.AuthSuccess>(
     'emailIdp',
     'finishRegistration',
     {
@@ -230,8 +237,8 @@ class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
   ///   made too many attempts trying to request a password reset.
   ///
   @override
-  _i2.Future<_i1.UuidValue> startPasswordReset({required String email}) =>
-      caller.callServerEndpoint<_i1.UuidValue>(
+  _ida.Future<_isc.UuidValue> startPasswordReset({required String email}) =>
+      caller.callServerEndpoint<_isc.UuidValue>(
         'emailIdp',
         'startPasswordReset',
         {'email': email},
@@ -252,8 +259,8 @@ class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
   /// should be overridden to return credentials for the next step instead
   /// of the credentials for setting the password.
   @override
-  _i2.Future<String> verifyPasswordResetCode({
-    required _i1.UuidValue passwordResetRequestId,
+  _ida.Future<String> verifyPasswordResetCode({
+    required _isc.UuidValue passwordResetRequestId,
     required String verificationCode,
   }) => caller.callServerEndpoint<String>(
     'emailIdp',
@@ -279,7 +286,7 @@ class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
   ///
   /// Throws an [AuthUserBlockedException] if the auth user is blocked.
   @override
-  _i2.Future<void> finishPasswordReset({
+  _ida.Future<void> finishPasswordReset({
     required String finishPasswordResetToken,
     required String newPassword,
   }) => caller.callServerEndpoint<void>(
@@ -292,7 +299,7 @@ class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
   );
 
   @override
-  _i2.Future<bool> hasAccount() => caller.callServerEndpoint<bool>(
+  _ida.Future<bool> hasAccount() => caller.callServerEndpoint<bool>(
     'emailIdp',
     'hasAccount',
     {},
@@ -302,13 +309,18 @@ class EndpointEmailIdp extends _i7.EndpointEmailIdpBase {
 /// By extending [RefreshJwtTokensEndpoint], the JWT token refresh endpoint
 /// is made available on the server and enables automatic token refresh on the client.
 /// {@category Endpoint}
-class EndpointJwtRefresh extends _i8.EndpointRefreshJwtTokens {
-  EndpointJwtRefresh(_i1.EndpointCaller caller) : super(caller);
+class EndpointJwtRefresh extends _iacc.EndpointRefreshJwtTokens {
+  EndpointJwtRefresh(_isc.EndpointCaller caller) : super(caller);
 
   @override
   String get name => 'jwtRefresh';
 
   /// Creates a new token pair for the given [refreshToken].
+  ///
+  /// If [refreshToken] is omitted, cookie-mode web clients fall back to the
+  /// configured HttpOnly refresh cookie. When neither source is present this
+  /// throws [RefreshTokenNotFoundException], the same public "no usable refresh
+  /// credential" exception used for unknown refresh tokens.
   ///
   /// Can throw the following exceptions:
   /// -[RefreshTokenMalformedException]: refresh token is malformed and could
@@ -327,53 +339,52 @@ class EndpointJwtRefresh extends _i8.EndpointRefreshJwtTokens {
   /// This endpoint is unauthenticated, meaning the client won't include any
   /// authentication information with the call.
   @override
-  _i2.Future<_i8.AuthSuccess> refreshAccessToken({
-    required String refreshToken,
-  }) => caller.callServerEndpoint<_i8.AuthSuccess>(
-    'jwtRefresh',
-    'refreshAccessToken',
-    {'refreshToken': refreshToken},
-    authenticated: false,
-  );
+  _ida.Future<_iacc.AuthSuccess> refreshAccessToken({String? refreshToken}) =>
+      caller.callServerEndpoint<_iacc.AuthSuccess>(
+        'jwtRefresh',
+        'refreshAccessToken',
+        {'refreshToken': refreshToken},
+        authenticated: false,
+      );
 }
 
 /// {@category Endpoint}
-class EndpointEntity extends _i1.EndpointRef {
-  EndpointEntity(_i1.EndpointCaller caller) : super(caller);
+class EndpointEntity extends _isc.EndpointRef {
+  EndpointEntity(_isc.EndpointCaller caller) : super(caller);
 
   @override
   String get name => 'entity';
 
-  _i2.Future<List<_i9.Entity>> readAll() =>
-      caller.callServerEndpoint<List<_i9.Entity>>(
+  _ida.Future<List<_izal7be4.Entity>> readAll() =>
+      caller.callServerEndpoint<List<_izal7be4.Entity>>(
         'entity',
         'readAll',
         {},
       );
 
-  _i2.Future<_i10.EntityApiResponse> create(_i9.Entity item) =>
-      caller.callServerEndpoint<_i10.EntityApiResponse>(
+  _ida.Future<_ic7nyn7t.EntityApiResponse> create(_izal7be4.Entity item) =>
+      caller.callServerEndpoint<_ic7nyn7t.EntityApiResponse>(
         'entity',
         'create',
         {'item': item},
       );
 
-  _i2.Future<_i10.EntityApiResponse> read(_i1.UuidValue id) =>
-      caller.callServerEndpoint<_i10.EntityApiResponse>(
+  _ida.Future<_ic7nyn7t.EntityApiResponse> read(_isc.UuidValue id) =>
+      caller.callServerEndpoint<_ic7nyn7t.EntityApiResponse>(
         'entity',
         'read',
         {'id': id},
       );
 
-  _i2.Future<_i10.EntityApiResponse> update(_i9.Entity item) =>
-      caller.callServerEndpoint<_i10.EntityApiResponse>(
+  _ida.Future<_ic7nyn7t.EntityApiResponse> update(_izal7be4.Entity item) =>
+      caller.callServerEndpoint<_ic7nyn7t.EntityApiResponse>(
         'entity',
         'update',
         {'item': item},
       );
 
-  _i2.Future<_i10.EntityApiResponse> delete(_i1.UuidValue id) =>
-      caller.callServerEndpoint<_i10.EntityApiResponse>(
+  _ida.Future<_ic7nyn7t.EntityApiResponse> delete(_isc.UuidValue id) =>
+      caller.callServerEndpoint<_ic7nyn7t.EntityApiResponse>(
         'entity',
         'delete',
         {'id': id},
@@ -381,79 +392,79 @@ class EndpointEntity extends _i1.EndpointRef {
 }
 
 /// {@category Endpoint}
-class EndpointEntityTmpl extends _i1.EndpointRef {
-  EndpointEntityTmpl(_i1.EndpointCaller caller) : super(caller);
+class EndpointEntityTmpl extends _isc.EndpointRef {
+  EndpointEntityTmpl(_isc.EndpointCaller caller) : super(caller);
 
   @override
   String get name => 'entityTmpl';
 
-  _i2.Future<_i11.EntityTmpl?> read(_i1.UuidValue id) =>
-      caller.callServerEndpoint<_i11.EntityTmpl?>(
+  _ida.Future<_iwm1c1te.EntityTmpl?> read(_isc.UuidValue id) =>
+      caller.callServerEndpoint<_iwm1c1te.EntityTmpl?>(
         'entityTmpl',
         'read',
         {'id': id},
       );
 
-  _i2.Future<List<_i11.EntityTmpl>> readAll() =>
-      caller.callServerEndpoint<List<_i11.EntityTmpl>>(
+  _ida.Future<List<_iwm1c1te.EntityTmpl>> readAll() =>
+      caller.callServerEndpoint<List<_iwm1c1te.EntityTmpl>>(
         'entityTmpl',
         'readAll',
         {},
       );
 
-  _i2.Future<_i12.EntityTmplApiResponse> create(_i11.EntityTmpl item) =>
-      caller.callServerEndpoint<_i12.EntityTmplApiResponse>(
-        'entityTmpl',
-        'create',
-        {'item': item},
-      );
-
-  _i2.Future<_i12.EntityTmplApiResponse> update(_i11.EntityTmpl item) =>
-      caller.callServerEndpoint<_i12.EntityTmplApiResponse>(
-        'entityTmpl',
-        'update',
-        {'item': item},
-      );
-
-  _i2.Future<bool> delete(_i1.UuidValue id) => caller.callServerEndpoint<bool>(
+  _ida.Future<_i82zt74k.EntityTmplApiResponse> create(
+    _iwm1c1te.EntityTmpl item,
+  ) => caller.callServerEndpoint<_i82zt74k.EntityTmplApiResponse>(
     'entityTmpl',
-    'delete',
-    {'id': id},
+    'create',
+    {'item': item},
   );
+
+  _ida.Future<_i82zt74k.EntityTmplApiResponse> update(
+    _iwm1c1te.EntityTmpl item,
+  ) => caller.callServerEndpoint<_i82zt74k.EntityTmplApiResponse>(
+    'entityTmpl',
+    'update',
+    {'item': item},
+  );
+
+  _ida.Future<bool> delete(_isc.UuidValue id) =>
+      caller.callServerEndpoint<bool>(
+        'entityTmpl',
+        'delete',
+        {'id': id},
+      );
 }
 
 class Modules {
   Modules(Client client) {
-    serverpod_auth_idp = _i7.Caller(client);
-    serverpod_auth_core = _i8.Caller(client);
+    serverpod_auth_idp = _iaic.Caller(client);
+    serverpod_auth_core = _iacc.Caller(client);
   }
 
-  late final _i7.Caller serverpod_auth_idp;
+  late final _iaic.Caller serverpod_auth_idp;
 
-  late final _i8.Caller serverpod_auth_core;
+  late final _iacc.Caller serverpod_auth_core;
 }
 
-class Client extends _i1.ServerpodClientShared {
+class Client extends _isc.ServerpodClientShared {
   Client(
     String host, {
     dynamic securityContext,
-    @Deprecated(
-      'Use authKeyProvider instead. This will be removed in future releases.',
-    )
-    super.authenticationKeyManager,
     Duration? streamingConnectionTimeout,
     Duration? connectionTimeout,
     Function(
-      _i1.MethodCallContext,
+      _isc.MethodCallContext,
       Object,
       StackTrace,
     )?
     onFailedCall,
-    Function(_i1.MethodCallContext)? onSucceededCall,
+    Function(_isc.MethodCallContext)? onSucceededCall,
     bool? disconnectStreamsOnLostInternetConnection,
+    _i85jenna.Client? httpClientOverride,
   }) : super(
          host,
-         _i13.Protocol(),
+         _il2as5qe.Protocol(),
          securityContext: securityContext,
          streamingConnectionTimeout: streamingConnectionTimeout,
          connectionTimeout: connectionTimeout,
@@ -461,6 +472,7 @@ class Client extends _i1.ServerpodClientShared {
          onSucceededCall: onSucceededCall,
          disconnectStreamsOnLostInternetConnection:
              disconnectStreamsOnLostInternetConnection,
+         httpClientOverride: httpClientOverride,
        ) {
     accessLevel = EndpointAccessLevel(this);
     attrTmpls = EndpointAttrTmpls(this);
@@ -486,7 +498,7 @@ class Client extends _i1.ServerpodClientShared {
   late final Modules modules;
 
   @override
-  Map<String, _i1.EndpointRef> get endpointRefLookup => {
+  Map<String, _isc.EndpointRef> get endpointRefLookup => {
     'accessLevel': accessLevel,
     'attrTmpls': attrTmpls,
     'emailIdp': emailIdp,
@@ -496,7 +508,7 @@ class Client extends _i1.ServerpodClientShared {
   };
 
   @override
-  Map<String, _i1.ModuleEndpointCaller> get moduleLookup => {
+  Map<String, _isc.ModuleEndpointCaller> get moduleLookup => {
     'serverpod_auth_idp': modules.serverpod_auth_idp,
     'serverpod_auth_core': modules.serverpod_auth_core,
   };

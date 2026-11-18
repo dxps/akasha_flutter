@@ -8,16 +8,17 @@
 // ignore_for_file: type_literal_in_constant_pattern
 // ignore_for_file: use_super_parameters
 // ignore_for_file: invalid_use_of_internal_member
-// ignore_for_file: unnecessary_null_comparison
+// ignore_for_file: dead_code, unnecessary_null_comparison
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import '../protocol.dart' as _i1;
-import 'package:serverpod/serverpod.dart' as _i2;
-import '../entity/ent.dart' as _i3;
-import 'package:akasha_server/src/generated/protocol.dart' as _i4;
+import 'dart:async' as _ida;
+import 'package:akasha_server/src/generated/protocol.dart' as _ijew7ys9;
+import 'package:serverpod/serverpod.dart' as _is;
+import '../entity/ent.dart' as _ia278iiv;
+import '../protocol.dart' as _iv35mfmj;
 
-abstract class EntityLink extends _i1.HasId
-    implements _i2.TableRow<_i2.UuidValue?>, _i2.ProtocolSerialization {
+abstract class EntityLink extends _iv35mfmj.HasId
+    implements _is.TableRow<_is.UuidValue?>, _is.ProtocolSerialization {
   EntityLink._({
     this.id,
     required this.name,
@@ -30,36 +31,40 @@ abstract class EntityLink extends _i1.HasId
   });
 
   factory EntityLink({
-    _i2.UuidValue? id,
+    _is.UuidValue? id,
     required String name,
     String? description,
     required int orderIdx,
-    required _i2.UuidValue sourceId,
-    _i3.Entity? source,
-    required _i2.UuidValue targetId,
-    _i3.Entity? target,
+    required _is.UuidValue sourceId,
+    _ia278iiv.Entity? source,
+    required _is.UuidValue targetId,
+    _ia278iiv.Entity? target,
   }) = _EntityLinkImpl;
 
   factory EntityLink.fromJson(Map<String, dynamic> jsonSerialization) {
     return EntityLink(
       id: jsonSerialization['id'] == null
           ? null
-          : _i2.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
+          : _is.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
       name: jsonSerialization['name'] as String,
       description: jsonSerialization['description'] as String?,
       orderIdx: jsonSerialization['orderIdx'] as int,
-      sourceId: _i2.UuidValueJsonExtension.fromJson(
+      sourceId: _is.UuidValueJsonExtension.fromJson(
         jsonSerialization['sourceId'],
       ),
       source: jsonSerialization['source'] == null
           ? null
-          : _i4.Protocol().deserialize<_i3.Entity>(jsonSerialization['source']),
-      targetId: _i2.UuidValueJsonExtension.fromJson(
+          : _ijew7ys9.Protocol().deserialize<_ia278iiv.Entity>(
+              jsonSerialization['source'],
+            ),
+      targetId: _is.UuidValueJsonExtension.fromJson(
         jsonSerialization['targetId'],
       ),
       target: jsonSerialization['target'] == null
           ? null
-          : _i4.Protocol().deserialize<_i3.Entity>(jsonSerialization['target']),
+          : _ijew7ys9.Protocol().deserialize<_ia278iiv.Entity>(
+              jsonSerialization['target'],
+            ),
     );
   }
 
@@ -68,7 +73,7 @@ abstract class EntityLink extends _i1.HasId
   static const db = EntityLinkRepository._();
 
   @override
-  _i2.UuidValue? id;
+  _is.UuidValue? id;
 
   String name;
 
@@ -76,32 +81,32 @@ abstract class EntityLink extends _i1.HasId
 
   int orderIdx;
 
-  _i2.UuidValue sourceId;
+  _is.UuidValue sourceId;
 
   /// The source of this entity link.
-  _i3.Entity? source;
+  _ia278iiv.Entity? source;
 
-  _i2.UuidValue targetId;
+  _is.UuidValue targetId;
 
   /// The target of this entity link.
-  _i3.Entity? target;
+  _ia278iiv.Entity? target;
 
   @override
-  _i2.Table<_i2.UuidValue?> get table => t;
+  _is.Table<_is.UuidValue?> get table => t;
 
   /// Returns a shallow copy of this [EntityLink]
   /// with some or all fields replaced by the given arguments.
   @override
-  @_i2.useResult
+  @_is.useResult
   EntityLink copyWith({
-    Object? id,
+    _is.UuidValue? id = const _is.$UndefinedUuidValue(),
     String? name,
     String? description,
     int? orderIdx,
-    _i2.UuidValue? sourceId,
-    _i3.Entity? source,
-    _i2.UuidValue? targetId,
-    _i3.Entity? target,
+    _is.UuidValue? sourceId,
+    _ia278iiv.Entity? source = const _UndefinedEntityLink$source(),
+    _is.UuidValue? targetId,
+    _ia278iiv.Entity? target = const _UndefinedEntityLink$source(),
   });
   @override
   Map<String, dynamic> toJson() {
@@ -134,8 +139,8 @@ abstract class EntityLink extends _i1.HasId
   }
 
   static EntityLinkInclude include({
-    _i3.EntityInclude? source,
-    _i3.EntityInclude? target,
+    _ia278iiv.EntityInclude? source,
+    _ia278iiv.EntityInclude? target,
   }) {
     return EntityLinkInclude._(
       source: source,
@@ -144,12 +149,11 @@ abstract class EntityLink extends _i1.HasId
   }
 
   static EntityLinkIncludeList includeList({
-    _i2.WhereExpressionBuilder<EntityLinkTable>? where,
+    _is.WhereExpressionBuilder<EntityLinkTable>? where,
     int? limit,
     int? offset,
-    _i2.OrderByBuilder<EntityLinkTable>? orderBy,
-    bool orderDescending = false,
-    _i2.OrderByListBuilder<EntityLinkTable>? orderByList,
+    _is.OrderByBuilder<EntityLinkTable>? orderBy,
+    _is.OrderByListBuilder<EntityLinkTable>? orderByList,
     EntityLinkInclude? include,
   }) {
     return EntityLinkIncludeList._(
@@ -157,7 +161,6 @@ abstract class EntityLink extends _i1.HasId
       limit: limit,
       offset: offset,
       orderBy: orderBy?.call(EntityLink.t),
-      orderDescending: orderDescending,
       orderByList: orderByList?.call(EntityLink.t),
       include: include,
     );
@@ -165,22 +168,27 @@ abstract class EntityLink extends _i1.HasId
 
   @override
   String toString() {
-    return _i2.SerializationManager.encode(this);
+    return _is.SerializationManager.encode(this);
   }
 }
 
 class _Undefined {}
 
+class _UndefinedEntityLink$source extends _is.UndefinedSentinel
+    implements _ia278iiv.Entity {
+  const _UndefinedEntityLink$source();
+}
+
 class _EntityLinkImpl extends EntityLink {
   _EntityLinkImpl({
-    _i2.UuidValue? id,
+    _is.UuidValue? id,
     required String name,
     String? description,
     required int orderIdx,
-    required _i2.UuidValue sourceId,
-    _i3.Entity? source,
-    required _i2.UuidValue targetId,
-    _i3.Entity? target,
+    required _is.UuidValue sourceId,
+    _ia278iiv.Entity? source,
+    required _is.UuidValue targetId,
+    _ia278iiv.Entity? target,
   }) : super._(
          id: id,
          name: name,
@@ -194,82 +202,86 @@ class _EntityLinkImpl extends EntityLink {
 
   /// Returns a shallow copy of this [EntityLink]
   /// with some or all fields replaced by the given arguments.
-  @_i2.useResult
+  @_is.useResult
   @override
   EntityLink copyWith({
-    Object? id = _Undefined,
+    _is.UuidValue? id = const _is.$UndefinedUuidValue(),
     String? name,
     Object? description = _Undefined,
     int? orderIdx,
-    _i2.UuidValue? sourceId,
-    Object? source = _Undefined,
-    _i2.UuidValue? targetId,
-    Object? target = _Undefined,
+    _is.UuidValue? sourceId,
+    _ia278iiv.Entity? source = const _UndefinedEntityLink$source(),
+    _is.UuidValue? targetId,
+    _ia278iiv.Entity? target = const _UndefinedEntityLink$source(),
   }) {
     return EntityLink(
-      id: id is _i2.UuidValue? ? id : this.id,
+      id: id is _is.UndefinedSentinel ? this.id : id,
       name: name ?? this.name,
       description: description is String? ? description : this.description,
       orderIdx: orderIdx ?? this.orderIdx,
       sourceId: sourceId ?? this.sourceId,
-      source: source is _i3.Entity? ? source : this.source?.copyWith(),
+      source: source is _is.UndefinedSentinel
+          ? this.source?.copyWith()
+          : source,
       targetId: targetId ?? this.targetId,
-      target: target is _i3.Entity? ? target : this.target?.copyWith(),
+      target: target is _is.UndefinedSentinel
+          ? this.target?.copyWith()
+          : target,
     );
   }
 }
 
-class EntityLinkUpdateTable extends _i2.UpdateTable<EntityLinkTable> {
+class EntityLinkUpdateTable extends _is.UpdateTable<EntityLinkTable> {
   EntityLinkUpdateTable(super.table);
 
-  _i2.ColumnValue<String, String> name(String value) => _i2.ColumnValue(
+  _is.ColumnValue<String, String> name(String value) => _is.ColumnValue(
     table.name,
     value,
   );
 
-  _i2.ColumnValue<String, String> description(String? value) => _i2.ColumnValue(
+  _is.ColumnValue<String, String> description(String? value) => _is.ColumnValue(
     table.description,
     value,
   );
 
-  _i2.ColumnValue<int, int> orderIdx(int value) => _i2.ColumnValue(
+  _is.ColumnValue<int, int> orderIdx(int value) => _is.ColumnValue(
     table.orderIdx,
     value,
   );
 
-  _i2.ColumnValue<_i2.UuidValue, _i2.UuidValue> sourceId(_i2.UuidValue value) =>
-      _i2.ColumnValue(
+  _is.ColumnValue<_is.UuidValue, _is.UuidValue> sourceId(_is.UuidValue value) =>
+      _is.ColumnValue(
         table.sourceId,
         value,
       );
 
-  _i2.ColumnValue<_i2.UuidValue, _i2.UuidValue> targetId(_i2.UuidValue value) =>
-      _i2.ColumnValue(
+  _is.ColumnValue<_is.UuidValue, _is.UuidValue> targetId(_is.UuidValue value) =>
+      _is.ColumnValue(
         table.targetId,
         value,
       );
 }
 
-class EntityLinkTable extends _i2.Table<_i2.UuidValue?> {
+class EntityLinkTable extends _is.Table<_is.UuidValue?> {
   EntityLinkTable({super.tableRelation}) : super(tableName: 'entity_links') {
     updateTable = EntityLinkUpdateTable(this);
-    name = _i2.ColumnString(
+    name = _is.ColumnString(
       'name',
       this,
     );
-    description = _i2.ColumnString(
+    description = _is.ColumnString(
       'description',
       this,
     );
-    orderIdx = _i2.ColumnInt(
+    orderIdx = _is.ColumnInt(
       'orderIdx',
       this,
     );
-    sourceId = _i2.ColumnUuid(
+    sourceId = _is.ColumnUuid(
       'sourceId',
       this,
     );
-    targetId = _i2.ColumnUuid(
+    targetId = _is.ColumnUuid(
       'targetId',
       this,
     );
@@ -277,50 +289,50 @@ class EntityLinkTable extends _i2.Table<_i2.UuidValue?> {
 
   late final EntityLinkUpdateTable updateTable;
 
-  late final _i2.ColumnString name;
+  late final _is.ColumnString name;
 
-  late final _i2.ColumnString description;
+  late final _is.ColumnString description;
 
-  late final _i2.ColumnInt orderIdx;
+  late final _is.ColumnInt orderIdx;
 
-  late final _i2.ColumnUuid sourceId;
+  late final _is.ColumnUuid sourceId;
 
   /// The source of this entity link.
-  _i3.EntityTable? _source;
+  _ia278iiv.EntityTable? _source;
 
-  late final _i2.ColumnUuid targetId;
+  late final _is.ColumnUuid targetId;
 
   /// The target of this entity link.
-  _i3.EntityTable? _target;
+  _ia278iiv.EntityTable? _target;
 
-  _i3.EntityTable get source {
+  _ia278iiv.EntityTable get source {
     if (_source != null) return _source!;
-    _source = _i2.createRelationTable(
+    _source = _is.createRelationTable(
       relationFieldName: 'source',
       field: EntityLink.t.sourceId,
-      foreignField: _i3.Entity.t.id,
+      foreignField: _ia278iiv.Entity.t.id,
       tableRelation: tableRelation,
       createTable: (foreignTableRelation) =>
-          _i3.EntityTable(tableRelation: foreignTableRelation),
+          _ia278iiv.EntityTable(tableRelation: foreignTableRelation),
     );
     return _source!;
   }
 
-  _i3.EntityTable get target {
+  _ia278iiv.EntityTable get target {
     if (_target != null) return _target!;
-    _target = _i2.createRelationTable(
+    _target = _is.createRelationTable(
       relationFieldName: 'target',
       field: EntityLink.t.targetId,
-      foreignField: _i3.Entity.t.id,
+      foreignField: _ia278iiv.Entity.t.id,
       tableRelation: tableRelation,
       createTable: (foreignTableRelation) =>
-          _i3.EntityTable(tableRelation: foreignTableRelation),
+          _ia278iiv.EntityTable(tableRelation: foreignTableRelation),
     );
     return _target!;
   }
 
   @override
-  List<_i2.Column> get columns => [
+  List<_is.Column> get columns => [
     id,
     name,
     description,
@@ -330,7 +342,7 @@ class EntityLinkTable extends _i2.Table<_i2.UuidValue?> {
   ];
 
   @override
-  _i2.Table? getRelationTable(String relationField) {
+  _is.Table? getRelationTable(String relationField) {
     if (relationField == 'source') {
       return source;
     }
@@ -341,36 +353,35 @@ class EntityLinkTable extends _i2.Table<_i2.UuidValue?> {
   }
 }
 
-class EntityLinkInclude extends _i2.IncludeObject {
+class EntityLinkInclude extends _is.IncludeObject {
   EntityLinkInclude._({
-    _i3.EntityInclude? source,
-    _i3.EntityInclude? target,
+    _ia278iiv.EntityInclude? source,
+    _ia278iiv.EntityInclude? target,
   }) {
     _source = source;
     _target = target;
   }
 
-  _i3.EntityInclude? _source;
+  _ia278iiv.EntityInclude? _source;
 
-  _i3.EntityInclude? _target;
+  _ia278iiv.EntityInclude? _target;
 
   @override
-  Map<String, _i2.Include?> get includes => {
+  Map<String, _is.Include?> get includes => {
     'source': _source,
     'target': _target,
   };
 
   @override
-  _i2.Table<_i2.UuidValue?> get table => EntityLink.t;
+  _is.Table<_is.UuidValue?> get table => EntityLink.t;
 }
 
-class EntityLinkIncludeList extends _i2.IncludeList {
+class EntityLinkIncludeList extends _is.IncludeList {
   EntityLinkIncludeList._({
-    _i2.WhereExpressionBuilder<EntityLinkTable>? where,
+    _is.WhereExpressionBuilder<EntityLinkTable>? where,
     super.limit,
     super.offset,
     super.orderBy,
-    super.orderDescending,
     super.orderByList,
     super.include,
   }) {
@@ -378,10 +389,10 @@ class EntityLinkIncludeList extends _i2.IncludeList {
   }
 
   @override
-  Map<String, _i2.Include?> get includes => include?.includes ?? {};
+  Map<String, _is.Include?> get includes => include?.includes ?? {};
 
   @override
-  _i2.Table<_i2.UuidValue?> get table => EntityLink.t;
+  _is.Table<_is.UuidValue?> get table => EntityLink.t;
 }
 
 class EntityLinkRepository {
@@ -412,29 +423,92 @@ class EntityLinkRepository {
   /// );
   /// ```
   Future<List<EntityLink>> find(
-    _i2.DatabaseSession session, {
-    _i2.WhereExpressionBuilder<EntityLinkTable>? where,
+    _is.DatabaseSession session, {
+    _is.WhereExpressionBuilder<EntityLinkTable>? where,
     int? limit,
     int? offset,
-    _i2.OrderByBuilder<EntityLinkTable>? orderBy,
-    bool orderDescending = false,
-    _i2.OrderByListBuilder<EntityLinkTable>? orderByList,
-    _i2.Transaction? transaction,
+    _is.OrderByBuilder<EntityLinkTable>? orderBy,
+    _is.OrderByListBuilder<EntityLinkTable>? orderByList,
+    _is.Transaction? transaction,
     EntityLinkInclude? include,
-    _i2.LockMode? lockMode,
-    _i2.LockBehavior? lockBehavior,
+    _is.LockMode? lockMode,
+    _is.LockBehavior? lockBehavior,
   }) async {
     return session.db.find<EntityLink>(
       where: where?.call(EntityLink.t),
       orderBy: orderBy?.call(EntityLink.t),
       orderByList: orderByList?.call(EntityLink.t),
-      orderDescending: orderDescending,
       limit: limit,
       offset: offset,
       transaction: transaction,
       include: include,
       lockMode: lockMode,
       lockBehavior: lockBehavior,
+    );
+  }
+
+  /// Emits [EntityLink]s matching the given query parameters every time the
+  /// source tables are modified.
+  ///
+  /// Use [where] to specify which items to include in the return value.
+  /// If none is specified, all items will be returned.
+  ///
+  /// To specify the order of the items use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// The maximum number of items can be set by [limit]. If no limit is set,
+  /// all items matching the query will be returned.
+  ///
+  /// [offset] defines how many items to skip, after which [limit] (or all)
+  /// items are read from the database.
+  ///
+  /// Use [throttle] to specify the minimum interval between queries. It can
+  /// also be set to `null`, in which case the stream will only be throttled
+  /// when its subscription is paused.
+  ///
+  /// Source tables are collected from the queried table, [where], [orderBy],
+  /// [orderByList], and the [include] graph. [alsoTriggerOnTables] is added
+  /// to that set. Pass [Table] instances such as `EntityLink.t`.
+  ///
+  /// Raw [Expression] SQL is not inspected. Tables referenced only in raw
+  /// SQL must be passed via [alsoTriggerOnTables].
+  ///
+  /// The stream always reads committed state and never joins an ambient
+  /// [Transaction]. Emissions for a write fire after that write commits.
+  ///
+  /// Currently only supported on SQLite. Calling this method on PostgreSQL
+  /// throws an [UnsupportedError].
+  ///
+  /// ```dart
+  /// var subscription = Persons.db.watch(
+  ///   session,
+  ///   where: (t) => t.lastName.equals('Jones'),
+  ///   orderBy: (t) => t.firstName,
+  ///   limit: 100,
+  /// ).listen((persons) {
+  ///   // Handle the latest matching rows.
+  /// });
+  /// ```
+  _ida.Stream<List<EntityLink>> watch(
+    _is.DatabaseSession session, {
+    _is.WhereExpressionBuilder<EntityLinkTable>? where,
+    int? limit,
+    int? offset,
+    _is.OrderByBuilder<EntityLinkTable>? orderBy,
+    _is.OrderByListBuilder<EntityLinkTable>? orderByList,
+    EntityLinkInclude? include,
+    Duration? throttle = const Duration(milliseconds: 30),
+    Iterable<_is.Table>? alsoTriggerOnTables,
+  }) {
+    return session.db.watch<EntityLink>(
+      where: where?.call(EntityLink.t),
+      orderBy: orderBy?.call(EntityLink.t),
+      orderByList: orderByList?.call(EntityLink.t),
+      limit: limit,
+      offset: offset,
+      include: include,
+      throttle: throttle,
+      alsoTriggerOnTables: alsoTriggerOnTables,
     );
   }
 
@@ -456,22 +530,20 @@ class EntityLinkRepository {
   /// );
   /// ```
   Future<EntityLink?> findFirstRow(
-    _i2.DatabaseSession session, {
-    _i2.WhereExpressionBuilder<EntityLinkTable>? where,
+    _is.DatabaseSession session, {
+    _is.WhereExpressionBuilder<EntityLinkTable>? where,
     int? offset,
-    _i2.OrderByBuilder<EntityLinkTable>? orderBy,
-    bool orderDescending = false,
-    _i2.OrderByListBuilder<EntityLinkTable>? orderByList,
-    _i2.Transaction? transaction,
+    _is.OrderByBuilder<EntityLinkTable>? orderBy,
+    _is.OrderByListBuilder<EntityLinkTable>? orderByList,
+    _is.Transaction? transaction,
     EntityLinkInclude? include,
-    _i2.LockMode? lockMode,
-    _i2.LockBehavior? lockBehavior,
+    _is.LockMode? lockMode,
+    _is.LockBehavior? lockBehavior,
   }) async {
     return session.db.findFirstRow<EntityLink>(
       where: where?.call(EntityLink.t),
       orderBy: orderBy?.call(EntityLink.t),
       orderByList: orderByList?.call(EntityLink.t),
-      orderDescending: orderDescending,
       offset: offset,
       transaction: transaction,
       include: include,
@@ -482,12 +554,12 @@ class EntityLinkRepository {
 
   /// Finds a single [EntityLink] by its [id] or null if no such row exists.
   Future<EntityLink?> findById(
-    _i2.DatabaseSession session,
-    _i2.UuidValue id, {
-    _i2.Transaction? transaction,
+    _is.DatabaseSession session,
+    _is.UuidValue id, {
+    _is.Transaction? transaction,
     EntityLinkInclude? include,
-    _i2.LockMode? lockMode,
-    _i2.LockBehavior? lockBehavior,
+    _is.LockMode? lockMode,
+    _is.LockBehavior? lockBehavior,
   }) async {
     return session.db.findById<EntityLink>(
       id,
@@ -508,16 +580,22 @@ class EntityLinkRepository {
   /// If [ignoreConflicts] is set to `true`, rows that conflict with existing
   /// rows are silently skipped, and only the successfully inserted rows are
   /// returned.
+  ///
+  /// If [noReturn] is set to `true`, the inserted rows are not read back from
+  /// the database and an empty list is returned. This avoids the overhead of
+  /// transferring and deserializing the rows when the result is not needed.
   Future<List<EntityLink>> insert(
-    _i2.DatabaseSession session,
+    _is.DatabaseSession session,
     List<EntityLink> rows, {
-    _i2.Transaction? transaction,
+    _is.Transaction? transaction,
     bool ignoreConflicts = false,
+    bool noReturn = false,
   }) async {
     return session.db.insert<EntityLink>(
       rows,
       transaction: transaction,
       ignoreConflicts: ignoreConflicts,
+      noReturn: noReturn,
     );
   }
 
@@ -525,12 +603,81 @@ class EntityLinkRepository {
   ///
   /// The returned [EntityLink] will have its `id` field set.
   Future<EntityLink> insertRow(
-    _i2.DatabaseSession session,
+    _is.DatabaseSession session,
     EntityLink row, {
-    _i2.Transaction? transaction,
+    _is.Transaction? transaction,
   }) async {
     return session.db.insertRow<EntityLink>(
       row,
+      transaction: transaction,
+    );
+  }
+
+  /// Upserts all [EntityLink]s in the list and returns the resulting rows.
+  ///
+  /// If a row conflicts on the given [conflictColumns], the existing row is
+  /// updated with the new values. Otherwise, a new row is inserted.
+  ///
+  /// If [updateColumns] is provided, only those columns will be updated on
+  /// conflict. If null, all non-conflict, non-id columns are updated.
+  ///
+  /// If [updateWhere] is provided, the update only applies to rows matching the
+  /// given expression. Conflicting rows that don't match are skipped and not
+  /// returned, so the resulting list may be shorter than [rows].
+  ///
+  /// The returned [EntityLink]s will have their `id` fields set.
+  ///
+  /// This is an atomic operation, meaning that if one of the rows fails,
+  /// none of the rows will be affected.
+  ///
+  /// If [noReturn] is set to `true`, the resulting rows are not read back from
+  /// the database and an empty list is returned. This avoids the overhead of
+  /// transferring and deserializing the rows when the result is not needed.
+  Future<List<EntityLink>> upsert(
+    _is.DatabaseSession session,
+    List<EntityLink> rows, {
+    required _is.ColumnSelections<EntityLinkTable> conflictColumns,
+    _is.ColumnSelections<EntityLinkTable>? updateColumns,
+    _is.WhereExpressionBuilder<EntityLinkTable>? updateWhere,
+    _is.Transaction? transaction,
+    bool noReturn = false,
+  }) async {
+    return session.db.upsert<EntityLink>(
+      rows,
+      conflictColumns: conflictColumns(EntityLink.t),
+      updateColumns: updateColumns?.call(EntityLink.t),
+      updateWhere: updateWhere?.call(EntityLink.t),
+      transaction: transaction,
+      noReturn: noReturn,
+    );
+  }
+
+  /// Upserts a single [EntityLink] and returns the resulting row.
+  ///
+  /// If the row conflicts on the given [conflictColumns], the existing row is
+  /// updated. Otherwise, a new row is inserted.
+  ///
+  /// If [updateColumns] is provided, only those columns will be updated on
+  /// conflict. If null, all non-conflict, non-id columns are updated.
+  ///
+  /// If [updateWhere] is provided, the update only applies when the existing
+  /// row matches the expression. Returns `null` if no row was affected — for
+  /// example when [updateWhere] does not match the conflicting row.
+  ///
+  /// The returned [EntityLink] will have its `id` field set.
+  Future<EntityLink?> upsertRow(
+    _is.DatabaseSession session,
+    EntityLink row, {
+    required _is.ColumnSelections<EntityLinkTable> conflictColumns,
+    _is.ColumnSelections<EntityLinkTable>? updateColumns,
+    _is.WhereExpressionBuilder<EntityLinkTable>? updateWhere,
+    _is.Transaction? transaction,
+  }) async {
+    return session.db.upsertRow<EntityLink>(
+      row,
+      conflictColumns: conflictColumns(EntityLink.t),
+      updateColumns: updateColumns?.call(EntityLink.t),
+      updateWhere: updateWhere?.call(EntityLink.t),
       transaction: transaction,
     );
   }
@@ -540,16 +687,22 @@ class EntityLinkRepository {
   /// all columns.
   /// This is an atomic operation, meaning that if one of the rows fails to
   /// update, none of the rows will be updated.
+  ///
+  /// If [noReturn] is set to `true`, the updated rows are not read back from
+  /// the database and an empty list is returned. This avoids the overhead of
+  /// transferring and deserializing the rows when the result is not needed.
   Future<List<EntityLink>> update(
-    _i2.DatabaseSession session,
+    _is.DatabaseSession session,
     List<EntityLink> rows, {
-    _i2.ColumnSelections<EntityLinkTable>? columns,
-    _i2.Transaction? transaction,
+    _is.ColumnSelections<EntityLinkTable>? columns,
+    _is.Transaction? transaction,
+    bool noReturn = false,
   }) async {
     return session.db.update<EntityLink>(
       rows,
       columns: columns?.call(EntityLink.t),
       transaction: transaction,
+      noReturn: noReturn,
     );
   }
 
@@ -557,10 +710,10 @@ class EntityLinkRepository {
   /// Optionally, a list of [columns] can be provided to only update those
   /// columns. Defaults to all columns.
   Future<EntityLink> updateRow(
-    _i2.DatabaseSession session,
+    _is.DatabaseSession session,
     EntityLink row, {
-    _i2.ColumnSelections<EntityLinkTable>? columns,
-    _i2.Transaction? transaction,
+    _is.ColumnSelections<EntityLinkTable>? columns,
+    _is.Transaction? transaction,
   }) async {
     return session.db.updateRow<EntityLink>(
       row,
@@ -572,10 +725,10 @@ class EntityLinkRepository {
   /// Updates a single [EntityLink] by its [id] with the specified [columnValues].
   /// Returns the updated row or null if no row with the given id exists.
   Future<EntityLink?> updateById(
-    _i2.DatabaseSession session,
-    _i2.UuidValue id, {
-    required _i2.ColumnValueListBuilder<EntityLinkUpdateTable> columnValues,
-    _i2.Transaction? transaction,
+    _is.DatabaseSession session,
+    _is.UuidValue id, {
+    required _is.ColumnValueListBuilder<EntityLinkUpdateTable> columnValues,
+    _is.Transaction? transaction,
   }) async {
     return session.db.updateById<EntityLink>(
       id,
@@ -586,16 +739,20 @@ class EntityLinkRepository {
 
   /// Updates all [EntityLink]s matching the [where] expression with the specified [columnValues].
   /// Returns the list of updated rows.
+  ///
+  /// If [noReturn] is set to `true`, the updated rows are not read back from
+  /// the database and an empty list is returned. This avoids the overhead of
+  /// transferring and deserializing the rows when the result is not needed.
   Future<List<EntityLink>> updateWhere(
-    _i2.DatabaseSession session, {
-    required _i2.ColumnValueListBuilder<EntityLinkUpdateTable> columnValues,
-    required _i2.WhereExpressionBuilder<EntityLinkTable> where,
+    _is.DatabaseSession session, {
+    required _is.ColumnValueListBuilder<EntityLinkUpdateTable> columnValues,
+    required _is.WhereExpressionBuilder<EntityLinkTable> where,
     int? limit,
     int? offset,
-    _i2.OrderByBuilder<EntityLinkTable>? orderBy,
-    _i2.OrderByListBuilder<EntityLinkTable>? orderByList,
-    bool orderDescending = false,
-    _i2.Transaction? transaction,
+    _is.OrderByBuilder<EntityLinkTable>? orderBy,
+    _is.OrderByListBuilder<EntityLinkTable>? orderByList,
+    _is.Transaction? transaction,
+    bool noReturn = false,
   }) async {
     return session.db.updateWhere<EntityLink>(
       columnValues: columnValues(EntityLink.t.updateTable),
@@ -604,30 +761,44 @@ class EntityLinkRepository {
       offset: offset,
       orderBy: orderBy?.call(EntityLink.t),
       orderByList: orderByList?.call(EntityLink.t),
-      orderDescending: orderDescending,
       transaction: transaction,
+      noReturn: noReturn,
     );
   }
 
   /// Deletes all [EntityLink]s in the list and returns the deleted rows.
+  ///
+  /// To specify the order of the returned rows use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
   /// This is an atomic operation, meaning that if one of the rows fail to
   /// be deleted, none of the rows will be deleted.
+  ///
+  /// If [noReturn] is set to `true`, the deleted rows are not read back from
+  /// the database and an empty list is returned. This avoids the overhead of
+  /// transferring and deserializing the rows when the result is not needed.
   Future<List<EntityLink>> delete(
-    _i2.DatabaseSession session,
+    _is.DatabaseSession session,
     List<EntityLink> rows, {
-    _i2.Transaction? transaction,
+    _is.OrderByBuilder<EntityLinkTable>? orderBy,
+    _is.OrderByListBuilder<EntityLinkTable>? orderByList,
+    _is.Transaction? transaction,
+    bool noReturn = false,
   }) async {
     return session.db.delete<EntityLink>(
       rows,
+      orderBy: orderBy?.call(EntityLink.t),
+      orderByList: orderByList?.call(EntityLink.t),
       transaction: transaction,
+      noReturn: noReturn,
     );
   }
 
   /// Deletes a single [EntityLink].
   Future<EntityLink> deleteRow(
-    _i2.DatabaseSession session,
+    _is.DatabaseSession session,
     EntityLink row, {
-    _i2.Transaction? transaction,
+    _is.Transaction? transaction,
   }) async {
     return session.db.deleteRow<EntityLink>(
       row,
@@ -636,24 +807,37 @@ class EntityLinkRepository {
   }
 
   /// Deletes all rows matching the [where] expression.
+  ///
+  /// To specify the order of the returned rows use [orderBy] or [orderByList]
+  /// when sorting by multiple columns.
+  ///
+  /// If [noReturn] is set to `true`, the deleted rows are not read back from
+  /// the database and an empty list is returned. This avoids the overhead of
+  /// transferring and deserializing the rows when the result is not needed.
   Future<List<EntityLink>> deleteWhere(
-    _i2.DatabaseSession session, {
-    required _i2.WhereExpressionBuilder<EntityLinkTable> where,
-    _i2.Transaction? transaction,
+    _is.DatabaseSession session, {
+    required _is.WhereExpressionBuilder<EntityLinkTable> where,
+    _is.OrderByBuilder<EntityLinkTable>? orderBy,
+    _is.OrderByListBuilder<EntityLinkTable>? orderByList,
+    _is.Transaction? transaction,
+    bool noReturn = false,
   }) async {
     return session.db.deleteWhere<EntityLink>(
       where: where(EntityLink.t),
+      orderBy: orderBy?.call(EntityLink.t),
+      orderByList: orderByList?.call(EntityLink.t),
       transaction: transaction,
+      noReturn: noReturn,
     );
   }
 
   /// Counts the number of rows matching the [where] expression. If omitted,
   /// will return the count of all rows in the table.
   Future<int> count(
-    _i2.DatabaseSession session, {
-    _i2.WhereExpressionBuilder<EntityLinkTable>? where,
+    _is.DatabaseSession session, {
+    _is.WhereExpressionBuilder<EntityLinkTable>? where,
     int? limit,
-    _i2.Transaction? transaction,
+    _is.Transaction? transaction,
   }) async {
     return session.db.count<EntityLink>(
       where: where?.call(EntityLink.t),
@@ -664,11 +848,11 @@ class EntityLinkRepository {
 
   /// Acquires row-level locks on [EntityLink] rows matching the [where] expression.
   Future<void> lockRows(
-    _i2.DatabaseSession session, {
-    required _i2.WhereExpressionBuilder<EntityLinkTable> where,
-    required _i2.LockMode lockMode,
-    required _i2.Transaction transaction,
-    _i2.LockBehavior lockBehavior = _i2.LockBehavior.wait,
+    _is.DatabaseSession session, {
+    required _is.WhereExpressionBuilder<EntityLinkTable> where,
+    required _is.LockMode lockMode,
+    required _is.Transaction transaction,
+    _is.LockBehavior lockBehavior = _is.LockBehavior.wait,
   }) async {
     return session.db.lockRows<EntityLink>(
       where: where(EntityLink.t),
@@ -685,10 +869,10 @@ class EntityLinkAttachRowRepository {
   /// Creates a relation between the given [EntityLink] and [Entity]
   /// by setting the [EntityLink]'s foreign key `sourceId` to refer to the [Entity].
   Future<void> source(
-    _i2.DatabaseSession session,
+    _is.DatabaseSession session,
     EntityLink entityLink,
-    _i3.Entity source, {
-    _i2.Transaction? transaction,
+    _ia278iiv.Entity source, {
+    _is.Transaction? transaction,
   }) async {
     if (entityLink.id == null) {
       throw ArgumentError.notNull('entityLink.id');
@@ -708,10 +892,10 @@ class EntityLinkAttachRowRepository {
   /// Creates a relation between the given [EntityLink] and [Entity]
   /// by setting the [EntityLink]'s foreign key `targetId` to refer to the [Entity].
   Future<void> target(
-    _i2.DatabaseSession session,
+    _is.DatabaseSession session,
     EntityLink entityLink,
-    _i3.Entity target, {
-    _i2.Transaction? transaction,
+    _ia278iiv.Entity target, {
+    _is.Transaction? transaction,
   }) async {
     if (entityLink.id == null) {
       throw ArgumentError.notNull('entityLink.id');

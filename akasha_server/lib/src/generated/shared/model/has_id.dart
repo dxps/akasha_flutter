@@ -10,27 +10,27 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod/serverpod.dart' as _i1;
+import 'package:serverpod/serverpod.dart' as _is;
 
-class HasId implements _i1.SerializableModel, _i1.ProtocolSerialization {
+class HasId implements _is.SerializableModel, _is.ProtocolSerialization {
   HasId({this.id});
 
   factory HasId.fromJson(Map<String, dynamic> jsonSerialization) {
     return HasId(
       id: jsonSerialization['id'] == null
           ? null
-          : _i1.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
+          : _is.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
     );
   }
 
   /// Its unique identifier.
-  _i1.UuidValue? id;
+  _is.UuidValue? id;
 
   /// Returns a shallow copy of this [HasId]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
-  HasId copyWith({Object? id = _Undefined}) {
-    return HasId(id: id is _i1.UuidValue? ? id : this.id);
+  @_is.useResult
+  HasId copyWith({_is.UuidValue? id = const _is.$UndefinedUuidValue()}) {
+    return HasId(id: id is _is.UndefinedSentinel ? this.id : id);
   }
 
   @override
@@ -51,8 +51,6 @@ class HasId implements _i1.SerializableModel, _i1.ProtocolSerialization {
 
   @override
   String toString() {
-    return _i1.SerializationManager.encode(this);
+    return _is.SerializationManager.encode(this);
   }
 }
-
-class _Undefined {}

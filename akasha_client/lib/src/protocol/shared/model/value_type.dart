@@ -10,9 +10,9 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
 
-enum ValueType implements _i1.SerializableModel {
+enum ValueType implements _isc.SerializableModel {
   text('text', 'Text'),
   number('number', 'Number'),
   boolean('boolean', 'Boolean'),

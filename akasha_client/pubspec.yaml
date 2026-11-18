@@ -2,10 +2,10 @@ name: akasha_client
 description: The (serverpod based) client of Akasha back-end.
 
 environment:
-  sdk: "^3.8.0"
+  sdk: "^3.12.2"
 
 resolution: workspace
 
 dependencies:
-  serverpod_auth_idp_client: 3.4.6
-  serverpod_client: 3.4.6
+  serverpod_auth_idp_client: 4.1.2
+  serverpod_client: 4.1.2

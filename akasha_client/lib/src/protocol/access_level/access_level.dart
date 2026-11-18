@@ -10,9 +10,10 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
 
-abstract class AccessLevel implements _i1.SerializableModel {
+abstract class AccessLevel
+    implements _isc.SerializableModel, _isc.ProtocolSerialization {
   AccessLevel._({
     this.id,
     required this.name,
@@ -44,7 +45,7 @@ abstract class AccessLevel implements _i1.SerializableModel {
 
   /// Returns a shallow copy of this [AccessLevel]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   AccessLevel copyWith({
     int? id,
     String? name,
@@ -61,8 +62,18 @@ abstract class AccessLevel implements _i1.SerializableModel {
   }
 
   @override
+  Map<String, dynamic> toJsonForProtocol() {
+    return {
+      '__className__': 'AccessLevel',
+      if (id != null) 'id': id,
+      'name': name,
+      if (description != null) 'description': description,
+    };
+  }
+
+  @override
   String toString() {
-    return _i1.SerializationManager.encode(this);
+    return _isc.SerializationManager.encode(this);
   }
 }
 
@@ -81,7 +92,7 @@ class _AccessLevelImpl extends AccessLevel {
 
   /// Returns a shallow copy of this [AccessLevel]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   @override
   AccessLevel copyWith({
     Object? id = _Undefined,

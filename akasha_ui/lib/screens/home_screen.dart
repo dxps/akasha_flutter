@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           const TopHeader(),
-          Image.asset('images/logo_o_light_grey.png', width: 200, height: 200),
+          Image.asset('assets/images/logo_o_light_grey.png', width: 200, height: 200),
           Center(
             child: SignInScreen(
               child: Column(

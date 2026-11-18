@@ -10,12 +10,13 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import '../protocol.dart' as _i1;
-import 'package:serverpod_client/serverpod_client.dart' as _i2;
-import '../entity/ent.dart' as _i3;
-import 'package:akasha_client/src/protocol/protocol.dart' as _i4;
+import 'package:akasha_client/src/protocol/protocol.dart' as _ivaz2sz9;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
+import '../entity/ent.dart' as _ia278iiv;
+import '../protocol.dart' as _iv35mfmj;
 
-abstract class EntityLink extends _i1.HasId implements _i2.SerializableModel {
+abstract class EntityLink extends _iv35mfmj.HasId
+    implements _isc.SerializableModel, _isc.ProtocolSerialization {
   EntityLink._({
     this.id,
     required this.name,
@@ -28,41 +29,45 @@ abstract class EntityLink extends _i1.HasId implements _i2.SerializableModel {
   });
 
   factory EntityLink({
-    _i2.UuidValue? id,
+    _isc.UuidValue? id,
     required String name,
     String? description,
     required int orderIdx,
-    required _i2.UuidValue sourceId,
-    _i3.Entity? source,
-    required _i2.UuidValue targetId,
-    _i3.Entity? target,
+    required _isc.UuidValue sourceId,
+    _ia278iiv.Entity? source,
+    required _isc.UuidValue targetId,
+    _ia278iiv.Entity? target,
   }) = _EntityLinkImpl;
 
   factory EntityLink.fromJson(Map<String, dynamic> jsonSerialization) {
     return EntityLink(
       id: jsonSerialization['id'] == null
           ? null
-          : _i2.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
+          : _isc.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
       name: jsonSerialization['name'] as String,
       description: jsonSerialization['description'] as String?,
       orderIdx: jsonSerialization['orderIdx'] as int,
-      sourceId: _i2.UuidValueJsonExtension.fromJson(
+      sourceId: _isc.UuidValueJsonExtension.fromJson(
         jsonSerialization['sourceId'],
       ),
       source: jsonSerialization['source'] == null
           ? null
-          : _i4.Protocol().deserialize<_i3.Entity>(jsonSerialization['source']),
-      targetId: _i2.UuidValueJsonExtension.fromJson(
+          : _ivaz2sz9.Protocol().deserialize<_ia278iiv.Entity>(
+              jsonSerialization['source'],
+            ),
+      targetId: _isc.UuidValueJsonExtension.fromJson(
         jsonSerialization['targetId'],
       ),
       target: jsonSerialization['target'] == null
           ? null
-          : _i4.Protocol().deserialize<_i3.Entity>(jsonSerialization['target']),
+          : _ivaz2sz9.Protocol().deserialize<_ia278iiv.Entity>(
+              jsonSerialization['target'],
+            ),
     );
   }
 
   /// Its unique identifier.
-  _i2.UuidValue? id;
+  _isc.UuidValue? id;
 
   String name;
 
@@ -70,29 +75,29 @@ abstract class EntityLink extends _i1.HasId implements _i2.SerializableModel {
 
   int orderIdx;
 
-  _i2.UuidValue sourceId;
+  _isc.UuidValue sourceId;
 
   /// The source of this entity link.
-  _i3.Entity? source;
+  _ia278iiv.Entity? source;
 
-  _i2.UuidValue targetId;
+  _isc.UuidValue targetId;
 
   /// The target of this entity link.
-  _i3.Entity? target;
+  _ia278iiv.Entity? target;
 
   /// Returns a shallow copy of this [EntityLink]
   /// with some or all fields replaced by the given arguments.
   @override
-  @_i2.useResult
+  @_isc.useResult
   EntityLink copyWith({
-    Object? id,
+    _isc.UuidValue? id = const _isc.$UndefinedUuidValue(),
     String? name,
     String? description,
     int? orderIdx,
-    _i2.UuidValue? sourceId,
-    _i3.Entity? source,
-    _i2.UuidValue? targetId,
-    _i3.Entity? target,
+    _isc.UuidValue? sourceId,
+    _ia278iiv.Entity? source = const _UndefinedEntityLink$source(),
+    _isc.UuidValue? targetId,
+    _ia278iiv.Entity? target = const _UndefinedEntityLink$source(),
   });
   @override
   Map<String, dynamic> toJson() {
@@ -110,23 +115,43 @@ abstract class EntityLink extends _i1.HasId implements _i2.SerializableModel {
   }
 
   @override
+  Map<String, dynamic> toJsonForProtocol() {
+    return {
+      '__className__': 'EntityLink',
+      if (id != null) 'id': id?.toJson(),
+      'name': name,
+      if (description != null) 'description': description,
+      'orderIdx': orderIdx,
+      'sourceId': sourceId.toJson(),
+      if (source != null) 'source': source?.toJsonForProtocol(),
+      'targetId': targetId.toJson(),
+      if (target != null) 'target': target?.toJsonForProtocol(),
+    };
+  }
+
+  @override
   String toString() {
-    return _i2.SerializationManager.encode(this);
+    return _isc.SerializationManager.encode(this);
   }
 }
 
 class _Undefined {}
 
+class _UndefinedEntityLink$source extends _isc.UndefinedSentinel
+    implements _ia278iiv.Entity {
+  const _UndefinedEntityLink$source();
+}
+
 class _EntityLinkImpl extends EntityLink {
   _EntityLinkImpl({
-    _i2.UuidValue? id,
+    _isc.UuidValue? id,
     required String name,
     String? description,
     required int orderIdx,
-    required _i2.UuidValue sourceId,
-    _i3.Entity? source,
-    required _i2.UuidValue targetId,
-    _i3.Entity? target,
+    required _isc.UuidValue sourceId,
+    _ia278iiv.Entity? source,
+    required _isc.UuidValue targetId,
+    _ia278iiv.Entity? target,
   }) : super._(
          id: id,
          name: name,
@@ -140,27 +165,31 @@ class _EntityLinkImpl extends EntityLink {
 
   /// Returns a shallow copy of this [EntityLink]
   /// with some or all fields replaced by the given arguments.
-  @_i2.useResult
+  @_isc.useResult
   @override
   EntityLink copyWith({
-    Object? id = _Undefined,
+    _isc.UuidValue? id = const _isc.$UndefinedUuidValue(),
     String? name,
     Object? description = _Undefined,
     int? orderIdx,
-    _i2.UuidValue? sourceId,
-    Object? source = _Undefined,
-    _i2.UuidValue? targetId,
-    Object? target = _Undefined,
+    _isc.UuidValue? sourceId,
+    _ia278iiv.Entity? source = const _UndefinedEntityLink$source(),
+    _isc.UuidValue? targetId,
+    _ia278iiv.Entity? target = const _UndefinedEntityLink$source(),
   }) {
     return EntityLink(
-      id: id is _i2.UuidValue? ? id : this.id,
+      id: id is _isc.UndefinedSentinel ? this.id : id,
       name: name ?? this.name,
       description: description is String? ? description : this.description,
       orderIdx: orderIdx ?? this.orderIdx,
       sourceId: sourceId ?? this.sourceId,
-      source: source is _i3.Entity? ? source : this.source?.copyWith(),
+      source: source is _isc.UndefinedSentinel
+          ? this.source?.copyWith()
+          : source,
       targetId: targetId ?? this.targetId,
-      target: target is _i3.Entity? ? target : this.target?.copyWith(),
+      target: target is _isc.UndefinedSentinel
+          ? this.target?.copyWith()
+          : target,
     );
   }
 }

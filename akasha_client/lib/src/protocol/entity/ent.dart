@@ -10,17 +10,18 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import '../protocol.dart' as _i1;
-import 'package:serverpod_client/serverpod_client.dart' as _i2;
-import '../attribute/text_attr.dart' as _i3;
-import '../attribute/number_attr.dart' as _i4;
-import '../attribute/bool_attr.dart' as _i5;
-import '../attribute/date_attr.dart' as _i6;
-import '../attribute/datetime_attr.dart' as _i7;
-import '../entity/ent_links.dart' as _i8;
-import 'package:akasha_client/src/protocol/protocol.dart' as _i9;
+import 'package:akasha_client/src/protocol/protocol.dart' as _ivaz2sz9;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
+import '../attribute/bool_attr.dart' as _ii9qxjwh;
+import '../attribute/date_attr.dart' as _isqijow5;
+import '../attribute/datetime_attr.dart' as _ijo5cid7;
+import '../attribute/number_attr.dart' as _ivacdz63;
+import '../attribute/text_attr.dart' as _ifywbt68;
+import '../entity/ent_links.dart' as _iptkpw9p;
+import '../protocol.dart' as _iv35mfmj;
 
-abstract class Entity extends _i1.HasId implements _i2.SerializableModel {
+abstract class Entity extends _iv35mfmj.HasId
+    implements _isc.SerializableModel, _isc.ProtocolSerialization {
   Entity._({
     this.id,
     required this.listingAttribute,
@@ -35,60 +36,64 @@ abstract class Entity extends _i1.HasId implements _i2.SerializableModel {
   });
 
   factory Entity({
-    _i2.UuidValue? id,
+    _isc.UuidValue? id,
     required (String, String) listingAttribute,
     required List<(int, String)> attributesOrder,
-    required List<_i3.TextAttribute> textAttributes,
-    required List<_i4.NumberAttribute> numberAttributes,
-    required List<_i5.BoolAttribute> boolAttributes,
-    required List<_i6.DateAttribute> dateAttributes,
-    required List<_i7.DateTimeAttribute> dateTimeAttributes,
-    List<_i8.EntityLink>? outgoingLinks,
-    List<_i8.EntityLink>? incomingLinks,
+    required List<_ifywbt68.TextAttribute> textAttributes,
+    required List<_ivacdz63.NumberAttribute> numberAttributes,
+    required List<_ii9qxjwh.BoolAttribute> boolAttributes,
+    required List<_isqijow5.DateAttribute> dateAttributes,
+    required List<_ijo5cid7.DateTimeAttribute> dateTimeAttributes,
+    List<_iptkpw9p.EntityLink>? outgoingLinks,
+    List<_iptkpw9p.EntityLink>? incomingLinks,
   }) = _EntityImpl;
 
   factory Entity.fromJson(Map<String, dynamic> jsonSerialization) {
     return Entity(
       id: jsonSerialization['id'] == null
           ? null
-          : _i2.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
-      listingAttribute: _i9.Protocol().deserialize<(String, String)>(
+          : _isc.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
+      listingAttribute: _ivaz2sz9.Protocol().deserialize<(String, String)>(
         (jsonSerialization['listingAttribute'] as Map<String, dynamic>),
       ),
-      attributesOrder: _i9.Protocol().deserialize<List<(int, String)>>(
+      attributesOrder: _ivaz2sz9.Protocol().deserialize<List<(int, String)>>(
         jsonSerialization['attributesOrder'],
       ),
-      textAttributes: _i9.Protocol().deserialize<List<_i3.TextAttribute>>(
-        jsonSerialization['textAttributes'],
-      ),
-      numberAttributes: _i9.Protocol().deserialize<List<_i4.NumberAttribute>>(
-        jsonSerialization['numberAttributes'],
-      ),
-      boolAttributes: _i9.Protocol().deserialize<List<_i5.BoolAttribute>>(
-        jsonSerialization['boolAttributes'],
-      ),
-      dateAttributes: _i9.Protocol().deserialize<List<_i6.DateAttribute>>(
-        jsonSerialization['dateAttributes'],
-      ),
-      dateTimeAttributes: _i9.Protocol()
-          .deserialize<List<_i7.DateTimeAttribute>>(
+      textAttributes: _ivaz2sz9.Protocol()
+          .deserialize<List<_ifywbt68.TextAttribute>>(
+            jsonSerialization['textAttributes'],
+          ),
+      numberAttributes: _ivaz2sz9.Protocol()
+          .deserialize<List<_ivacdz63.NumberAttribute>>(
+            jsonSerialization['numberAttributes'],
+          ),
+      boolAttributes: _ivaz2sz9.Protocol()
+          .deserialize<List<_ii9qxjwh.BoolAttribute>>(
+            jsonSerialization['boolAttributes'],
+          ),
+      dateAttributes: _ivaz2sz9.Protocol()
+          .deserialize<List<_isqijow5.DateAttribute>>(
+            jsonSerialization['dateAttributes'],
+          ),
+      dateTimeAttributes: _ivaz2sz9.Protocol()
+          .deserialize<List<_ijo5cid7.DateTimeAttribute>>(
             jsonSerialization['dateTimeAttributes'],
           ),
       outgoingLinks: jsonSerialization['outgoingLinks'] == null
           ? null
-          : _i9.Protocol().deserialize<List<_i8.EntityLink>>(
+          : _ivaz2sz9.Protocol().deserialize<List<_iptkpw9p.EntityLink>>(
               jsonSerialization['outgoingLinks'],
             ),
       incomingLinks: jsonSerialization['incomingLinks'] == null
           ? null
-          : _i9.Protocol().deserialize<List<_i8.EntityLink>>(
+          : _ivaz2sz9.Protocol().deserialize<List<_iptkpw9p.EntityLink>>(
               jsonSerialization['incomingLinks'],
             ),
     );
   }
 
   /// Its unique identifier.
-  _i2.UuidValue? id;
+  _isc.UuidValue? id;
 
   /// The attribute (the name and its value) that is presented in the listing of entities.
   (String, String) listingAttribute;
@@ -96,43 +101,49 @@ abstract class Entity extends _i1.HasId implements _i2.SerializableModel {
   /// The order of attributes. Each list item is a tuple of (order-idx, attribute-type).
   List<(int, String)> attributesOrder;
 
-  List<_i3.TextAttribute> textAttributes;
+  List<_ifywbt68.TextAttribute> textAttributes;
 
-  List<_i4.NumberAttribute> numberAttributes;
+  List<_ivacdz63.NumberAttribute> numberAttributes;
 
-  List<_i5.BoolAttribute> boolAttributes;
+  List<_ii9qxjwh.BoolAttribute> boolAttributes;
 
-  List<_i6.DateAttribute> dateAttributes;
+  List<_isqijow5.DateAttribute> dateAttributes;
 
-  List<_i7.DateTimeAttribute> dateTimeAttributes;
+  List<_ijo5cid7.DateTimeAttribute> dateTimeAttributes;
 
-  List<_i8.EntityLink>? outgoingLinks;
+  List<_iptkpw9p.EntityLink>? outgoingLinks;
 
-  List<_i8.EntityLink>? incomingLinks;
+  List<_iptkpw9p.EntityLink>? incomingLinks;
 
   /// Returns a shallow copy of this [Entity]
   /// with some or all fields replaced by the given arguments.
   @override
-  @_i2.useResult
+  @_isc.useResult
   Entity copyWith({
-    Object? id,
+    _isc.UuidValue? id = const _isc.$UndefinedUuidValue(),
     (String, String)? listingAttribute,
     List<(int, String)>? attributesOrder,
-    List<_i3.TextAttribute>? textAttributes,
-    List<_i4.NumberAttribute>? numberAttributes,
-    List<_i5.BoolAttribute>? boolAttributes,
-    List<_i6.DateAttribute>? dateAttributes,
-    List<_i7.DateTimeAttribute>? dateTimeAttributes,
-    List<_i8.EntityLink>? outgoingLinks,
-    List<_i8.EntityLink>? incomingLinks,
+    List<_ifywbt68.TextAttribute>? textAttributes,
+    List<_ivacdz63.NumberAttribute>? numberAttributes,
+    List<_ii9qxjwh.BoolAttribute>? boolAttributes,
+    List<_isqijow5.DateAttribute>? dateAttributes,
+    List<_ijo5cid7.DateTimeAttribute>? dateTimeAttributes,
+    List<_iptkpw9p.EntityLink>? outgoingLinks =
+        const _isc.$UndefinedList<_iptkpw9p.EntityLink>(),
+    List<_iptkpw9p.EntityLink>? incomingLinks =
+        const _isc.$UndefinedList<_iptkpw9p.EntityLink>(),
   });
   @override
   Map<String, dynamic> toJson() {
     return {
       '__className__': 'Entity',
       if (id != null) 'id': id?.toJson(),
-      'listingAttribute': _i9.Protocol().mapRecordToJson(listingAttribute),
-      'attributesOrder': _i9.Protocol().mapContainerToJson(attributesOrder),
+      'listingAttribute': _ivaz2sz9.Protocol().mapRecordToJson(
+        listingAttribute,
+      ),
+      'attributesOrder': _ivaz2sz9.Protocol().mapContainerToJson(
+        attributesOrder,
+      ),
       'textAttributes': textAttributes.toJson(valueToJson: (v) => v.toJson()),
       'numberAttributes': numberAttributes.toJson(
         valueToJson: (v) => v.toJson(),
@@ -150,25 +161,60 @@ abstract class Entity extends _i1.HasId implements _i2.SerializableModel {
   }
 
   @override
+  Map<String, dynamic> toJsonForProtocol() {
+    return {
+      '__className__': 'Entity',
+      if (id != null) 'id': id?.toJson(),
+      'listingAttribute': _ivaz2sz9.Protocol().mapRecordToJson(
+        listingAttribute,
+      ),
+      'attributesOrder': _ivaz2sz9.Protocol().mapContainerToJson(
+        attributesOrder,
+      ),
+      'textAttributes': textAttributes.toJson(
+        valueToJson: (v) => v.toJsonForProtocol(),
+      ),
+      'numberAttributes': numberAttributes.toJson(
+        valueToJson: (v) => v.toJsonForProtocol(),
+      ),
+      'boolAttributes': boolAttributes.toJson(
+        valueToJson: (v) => v.toJsonForProtocol(),
+      ),
+      'dateAttributes': dateAttributes.toJson(
+        valueToJson: (v) => v.toJsonForProtocol(),
+      ),
+      'dateTimeAttributes': dateTimeAttributes.toJson(
+        valueToJson: (v) => v.toJsonForProtocol(),
+      ),
+      if (outgoingLinks != null)
+        'outgoingLinks': outgoingLinks?.toJson(
+          valueToJson: (v) => v.toJsonForProtocol(),
+        ),
+      if (incomingLinks != null)
+        'incomingLinks': incomingLinks?.toJson(
+          valueToJson: (v) => v.toJsonForProtocol(),
+        ),
+    };
+  }
+
+  @override
   String toString() {
-    return _i2.SerializationManager.encode(this);
+    return _isc.SerializationManager.encode(this);
   }
 }
 
-class _Undefined {}
-
 class _EntityImpl extends Entity {
   _EntityImpl({
-    _i2.UuidValue? id,
+    _isc.UuidValue? id,
     required (String, String) listingAttribute,
     required List<(int, String)> attributesOrder,
-    required List<_i3.TextAttribute> textAttributes,
-    required List<_i4.NumberAttribute> numberAttributes,
-    required List<_i5.BoolAttribute> boolAttributes,
-    required List<_i6.DateAttribute> dateAttributes,
-    required List<_i7.DateTimeAttribute> dateTimeAttributes,
-    List<_i8.EntityLink>? outgoingLinks,
-    List<_i8.EntityLink>? incomingLinks,
+    required List<_ifywbt68.TextAttribute> textAttributes,
+    required List<_ivacdz63.NumberAttribute> numberAttributes,
+    required List<_ii9qxjwh.BoolAttribute> boolAttributes,
+    required List<_isqijow5.DateAttribute> dateAttributes,
+    required List<_ijo5cid7.DateTimeAttribute> dateTimeAttributes,
+    List<_iptkpw9p.EntityLink>? outgoingLinks,
+    List<_iptkpw9p.EntityLink>? incomingLinks,
   }) : super._(
          id: id,
          listingAttribute: listingAttribute,
@@ -184,22 +230,24 @@ class _EntityImpl extends Entity {
 
   /// Returns a shallow copy of this [Entity]
   /// with some or all fields replaced by the given arguments.
-  @_i2.useResult
+  @_isc.useResult
   @override
   Entity copyWith({
-    Object? id = _Undefined,
+    _isc.UuidValue? id = const _isc.$UndefinedUuidValue(),
     (String, String)? listingAttribute,
     List<(int, String)>? attributesOrder,
-    List<_i3.TextAttribute>? textAttributes,
-    List<_i4.NumberAttribute>? numberAttributes,
-    List<_i5.BoolAttribute>? boolAttributes,
-    List<_i6.DateAttribute>? dateAttributes,
-    List<_i7.DateTimeAttribute>? dateTimeAttributes,
-    Object? outgoingLinks = _Undefined,
-    Object? incomingLinks = _Undefined,
+    List<_ifywbt68.TextAttribute>? textAttributes,
+    List<_ivacdz63.NumberAttribute>? numberAttributes,
+    List<_ii9qxjwh.BoolAttribute>? boolAttributes,
+    List<_isqijow5.DateAttribute>? dateAttributes,
+    List<_ijo5cid7.DateTimeAttribute>? dateTimeAttributes,
+    List<_iptkpw9p.EntityLink>? outgoingLinks =
+        const _isc.$UndefinedList<_iptkpw9p.EntityLink>(),
+    List<_iptkpw9p.EntityLink>? incomingLinks =
+        const _isc.$UndefinedList<_iptkpw9p.EntityLink>(),
   }) {
     return Entity(
-      id: id is _i2.UuidValue? ? id : this.id,
+      id: id is _isc.UndefinedSentinel ? this.id : id,
       listingAttribute:
           listingAttribute ??
           (
@@ -231,12 +279,12 @@ class _EntityImpl extends Entity {
       dateTimeAttributes:
           dateTimeAttributes ??
           this.dateTimeAttributes.map((e0) => e0.copyWith()).toList(),
-      outgoingLinks: outgoingLinks is List<_i8.EntityLink>?
-          ? outgoingLinks
-          : this.outgoingLinks?.map((e0) => e0.copyWith()).toList(),
-      incomingLinks: incomingLinks is List<_i8.EntityLink>?
-          ? incomingLinks
-          : this.incomingLinks?.map((e0) => e0.copyWith()).toList(),
+      outgoingLinks: outgoingLinks is _isc.UndefinedSentinel
+          ? this.outgoingLinks?.map((e0) => e0.copyWith()).toList()
+          : outgoingLinks,
+      incomingLinks: incomingLinks is _isc.UndefinedSentinel
+          ? this.incomingLinks?.map((e0) => e0.copyWith()).toList()
+          : incomingLinks,
     );
   }
 }

@@ -23,7 +23,7 @@ class TopHeader extends StatelessWidget {
                 InkWell(
                   hoverColor: Colors.transparent,
                   onTap: () => context.go(Routes.home.path),
-                  child: Image.asset('images/logo_o_light_grey.png', width: 34, height: 34),
+                  child: Image.asset('assets/images/logo_o_light_grey.png', width: 34, height: 34),
                 ),
                 const Spacer(),
                 TextButton(

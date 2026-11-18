@@ -2,4 +2,4 @@
 ## Useful for reusing browser's storage.
 server:
   host: "localhost"
-  port: 9096
+  port: 9089

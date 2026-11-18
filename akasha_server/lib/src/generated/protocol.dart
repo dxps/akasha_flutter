@@ -8,41 +8,42 @@
 // ignore_for_file: type_literal_in_constant_pattern
 // ignore_for_file: use_super_parameters
 // ignore_for_file: invalid_use_of_internal_member
+// ignore_for_file: dead_code, unnecessary_type_check
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod/serverpod.dart' as _i1;
-import 'package:serverpod/protocol.dart' as _i2;
-import 'package:serverpod_auth_idp_server/serverpod_auth_idp_server.dart'
-    as _i3;
-import 'package:serverpod_auth_core_server/serverpod_auth_core_server.dart'
-    as _i4;
-import 'access_level/access_level.dart' as _i5;
-import 'access_level/access_level_api_resp.dart' as _i6;
-import 'attribute/bool_attr.dart' as _i7;
-import 'attribute/date_attr.dart' as _i8;
-import 'attribute/datetime_attr.dart' as _i9;
-import 'attribute/number_attr.dart' as _i10;
-import 'attribute/text_attr.dart' as _i11;
-import 'attribute/attr.dart' as _i12;
-import 'attribute_template/attr_tmpl.dart' as _i13;
-import 'attribute_template/attr_tmpl_api_resp.dart' as _i14;
-import 'entity/ent.dart' as _i15;
-import 'entity/ent_api_resp.dart' as _i16;
-import 'entity/ent_links.dart' as _i17;
-import 'entity_template/entity_tmpl.dart' as _i18;
-import 'entity_template/entity_tmpl_api_resp.dart' as _i19;
-import 'entity_template/entity_tmpl_attribute.dart' as _i20;
-import 'entity_template/entity_tmpl_link.dart' as _i21;
-import 'shared/api/exceptions/api_exception.dart' as _i22;
-import 'shared/model/has_id.dart' as _i23;
-import 'shared/model/value_type.dart' as _i24;
 import 'package:akasha_server/src/generated/access_level/access_level.dart'
-    as _i25;
+    as _io8zdy2p;
 import 'package:akasha_server/src/generated/attribute_template/attr_tmpl.dart'
-    as _i26;
-import 'package:akasha_server/src/generated/entity/ent.dart' as _i27;
+    as _igudksr2;
+import 'package:akasha_server/src/generated/entity/ent.dart' as _ix04eq4k;
 import 'package:akasha_server/src/generated/entity_template/entity_tmpl.dart'
-    as _i28;
+    as _ikg1bwga;
+import 'package:serverpod/protocol.dart' as _isp;
+import 'package:serverpod/serverpod.dart' as _is;
+import 'package:serverpod_auth_core_server/serverpod_auth_core_server.dart'
+    as _iacs;
+import 'package:serverpod_auth_idp_server/serverpod_auth_idp_server.dart'
+    as _iais;
+import 'access_level/access_level.dart' as _iqdeqche;
+import 'access_level/access_level_api_resp.dart' as _ivq36grj;
+import 'attribute/attr.dart' as _imvasoiw;
+import 'attribute/bool_attr.dart' as _iohvvqe6;
+import 'attribute/date_attr.dart' as _i0ldqs5e;
+import 'attribute/datetime_attr.dart' as _i70ost6n;
+import 'attribute/number_attr.dart' as _i9j261aq;
+import 'attribute/text_attr.dart' as _i98yaqko;
+import 'attribute_template/attr_tmpl.dart' as _iaibcu4j;
+import 'attribute_template/attr_tmpl_api_resp.dart' as _iheicol0;
+import 'entity/ent.dart' as _ix1pqi7m;
+import 'entity/ent_api_resp.dart' as _igvxc25l;
+import 'entity/ent_links.dart' as _ifd3k20o;
+import 'entity_template/entity_tmpl.dart' as _iu5yu710;
+import 'entity_template/entity_tmpl_api_resp.dart' as _ixcorsp0;
+import 'entity_template/entity_tmpl_attribute.dart' as _ioae6byd;
+import 'entity_template/entity_tmpl_link.dart' as _iq4c1nxl;
+import 'shared/api/exceptions/api_exception.dart' as _imk1ye7t;
+import 'shared/model/has_id.dart' as _in58sj53;
+import 'shared/model/value_type.dart' as _i726e7o0;
 export 'access_level/access_level.dart';
 export 'access_level/access_level_api_resp.dart';
 export 'attribute/bool_attr.dart';
@@ -64,61 +65,152 @@ export 'shared/api/exceptions/api_exception.dart';
 export 'shared/model/has_id.dart';
 export 'shared/model/value_type.dart';
 
-class Protocol extends _i1.SerializationManagerServer {
+class Protocol extends _is.DatabaseSerializationManager
+    implements _is.DatabaseProtocolDeserializationProvider {
   Protocol._();
 
   factory Protocol() => _instance;
 
-  static final Protocol _instance = Protocol._();
+  static final Protocol _instance = Protocol._().._registerHostProtocols();
 
-  static final List<_i2.TableDefinition> targetTableDefinitions = [
-    _i2.TableDefinition(
+  @override
+  _is.ProtocolDeserialization get deserializationMetadata =>
+      _is.ProtocolDeserialization.cached(
+        this,
+        types: const [
+          _is.getType<_iqdeqche.AccessLevel>,
+          _is.getType<_ivq36grj.AccessLevelApiResponse>,
+          _is.getType<_iohvvqe6.BoolAttribute>,
+          _is.getType<_i0ldqs5e.DateAttribute>,
+          _is.getType<_i70ost6n.DateTimeAttribute>,
+          _is.getType<_i9j261aq.NumberAttribute>,
+          _is.getType<_i98yaqko.TextAttribute>,
+          _is.getType<_imvasoiw.Attribute>,
+          _is.getType<_iaibcu4j.AttributeTmpl>,
+          _is.getType<_iheicol0.AttributeTmplApiResponse>,
+          _is.getType<_ix1pqi7m.Entity>,
+          _is.getType<_igvxc25l.EntityApiResponse>,
+          _is.getType<_ifd3k20o.EntityLink>,
+          _is.getType<_iu5yu710.EntityTmpl>,
+          _is.getType<_ixcorsp0.EntityTmplApiResponse>,
+          _is.getType<_ioae6byd.EntityTmplAttribute>,
+          _is.getType<_iq4c1nxl.EntityTmplLink>,
+          _is.getType<_imk1ye7t.ApiException>,
+          _is.getType<_in58sj53.HasId>,
+          _is.getType<_i726e7o0.ValueType>,
+          _is.getType<_iqdeqche.AccessLevel?>,
+          _is.getType<_ivq36grj.AccessLevelApiResponse?>,
+          _is.getType<_iohvvqe6.BoolAttribute?>,
+          _is.getType<_i0ldqs5e.DateAttribute?>,
+          _is.getType<_i70ost6n.DateTimeAttribute?>,
+          _is.getType<_i9j261aq.NumberAttribute?>,
+          _is.getType<_i98yaqko.TextAttribute?>,
+          _is.getType<_imvasoiw.Attribute?>,
+          _is.getType<_iaibcu4j.AttributeTmpl?>,
+          _is.getType<_iheicol0.AttributeTmplApiResponse?>,
+          _is.getType<_ix1pqi7m.Entity?>,
+          _is.getType<_igvxc25l.EntityApiResponse?>,
+          _is.getType<_ifd3k20o.EntityLink?>,
+          _is.getType<_iu5yu710.EntityTmpl?>,
+          _is.getType<_ixcorsp0.EntityTmplApiResponse?>,
+          _is.getType<_ioae6byd.EntityTmplAttribute?>,
+          _is.getType<_iq4c1nxl.EntityTmplLink?>,
+          _is.getType<_imk1ye7t.ApiException?>,
+          _is.getType<_in58sj53.HasId?>,
+          _is.getType<_i726e7o0.ValueType?>,
+          _is.getType<(String, String)>,
+          _is.getType<List<(int, String)>>,
+          _is.getType<(int, String)>,
+          _is.getType<List<_i98yaqko.TextAttribute>>,
+          _is.getType<List<_i9j261aq.NumberAttribute>>,
+          _is.getType<List<_iohvvqe6.BoolAttribute>>,
+          _is.getType<List<_i0ldqs5e.DateAttribute>>,
+          _is.getType<List<_i70ost6n.DateTimeAttribute>>,
+          _is.getType<List<_ifd3k20o.EntityLink>>,
+          _is.getType<List<_ifd3k20o.EntityLink>?>,
+          _is.getType<List<_ioae6byd.EntityTmplAttribute>>,
+          _is.getType<List<_ioae6byd.EntityTmplAttribute>?>,
+          _is.getType<List<_iq4c1nxl.EntityTmplLink>>,
+          _is.getType<List<_iq4c1nxl.EntityTmplLink>?>,
+          _is.getType<List<_io8zdy2p.AccessLevel>>,
+          _is.getType<List<_igudksr2.AttributeTmpl>>,
+          _is.getType<List<_ix04eq4k.Entity>>,
+          _is.getType<List<_ikg1bwga.EntityTmpl>>,
+          _is.getType<(String, String)>,
+          _is.getType<(int, String)>,
+          _is.getType<(int, String)>,
+        ],
+        modules: const [
+          _iais.Protocol.new,
+          _iacs.Protocol.new,
+          _isp.Protocol.new,
+        ],
+        classNames: const [
+          'AccessLevel',
+          'AccessLevelApiResponse',
+          'BoolAttribute',
+          'DateAttribute',
+          'DateTimeAttribute',
+          'NumberAttribute',
+          'TextAttribute',
+          'Attribute',
+          'AttributeTmpl',
+          'AttributeTmplApiResponse',
+          'Entity',
+          'EntityApiResponse',
+          'EntityLink',
+          'EntityTmpl',
+          'EntityTmplApiResponse',
+          'EntityTmplAttribute',
+          'EntityTmplLink',
+          'ApiException',
+          'HasId',
+          'ValueType',
+        ],
+      );
+
+  static List<_isp.TableDefinition> get targetTableDefinitions => [
+    ..._ownTableDefinitions,
+    ..._iais.Protocol().getOwnTableDefinitions(),
+    ..._iacs.Protocol().getOwnTableDefinitions(),
+    ..._isp.Protocol.targetTableDefinitions,
+  ];
+
+  static List<_isp.TableDefinition> get _ownTableDefinitions => [
+    _isp.TableDefinition(
       name: 'access_levels',
       dartName: 'AccessLevel',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int?',
-          columnDefault: 'nextval(\'access_levels_id_seq\'::regclass)',
+          columnDefault: 'serial',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
       ],
       foreignKeys: [],
       indexes: [
-        _i2.IndexDefinition(
-          indexName: 'access_levels_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-        _i2.IndexDefinition(
+        _isp.IndexDefinition(
           indexName: 'access_level_name_uniq_idx',
           tableSpace: null,
           elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'name',
             ),
           ],
@@ -129,92 +221,79 @@ class Protocol extends _i1.SerializationManagerServer {
       ],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'attribute_tmpls',
       dartName: 'AttributeTmpl',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'valueType',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'defaultValue',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'required',
-          columnType: _i2.ColumnType.boolean,
+          columnType: _isp.ColumnType.boolean,
           isNullable: false,
           dartType: 'bool',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'accessLevelId',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
         ),
       ],
       foreignKeys: [
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'attribute_tmpls_fk_0',
           columns: ['accessLevelId'],
           referenceTable: 'access_levels',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
       ],
       indexes: [
-        _i2.IndexDefinition(
-          indexName: 'attribute_tmpls_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-        _i2.IndexDefinition(
+        _isp.IndexDefinition(
           indexName: 'attr_tmpl_name_desc_uniq_idx',
           tableSpace: null,
           elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'name',
             ),
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'description',
             ),
           ],
@@ -225,460 +304,377 @@ class Protocol extends _i1.SerializationManagerServer {
       ],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'bool_attributes',
       dartName: 'BoolAttribute',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'valueType',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'protocol:ValueType',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'value',
-          columnType: _i2.ColumnType.boolean,
+          columnType: _isp.ColumnType.boolean,
           isNullable: false,
           dartType: 'bool',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'accessLevelId',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
         ),
       ],
       foreignKeys: [
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'bool_attributes_fk_0',
           columns: ['accessLevelId'],
           referenceTable: 'access_levels',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
       ],
-      indexes: [
-        _i2.IndexDefinition(
-          indexName: 'bool_attributes_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-      ],
+      indexes: [],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'date_attributes',
       dartName: 'DateAttribute',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'valueType',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'protocol:ValueType',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'value',
-          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          columnType: _isp.ColumnType.timestampWithoutTimeZone,
           isNullable: false,
           dartType: 'DateTime',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'accessLevelId',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
         ),
       ],
       foreignKeys: [
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'date_attributes_fk_0',
           columns: ['accessLevelId'],
           referenceTable: 'access_levels',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
       ],
-      indexes: [
-        _i2.IndexDefinition(
-          indexName: 'date_attributes_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-      ],
+      indexes: [],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'datetime_attributes',
       dartName: 'DateTimeAttribute',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'valueType',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'protocol:ValueType',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'value',
-          columnType: _i2.ColumnType.timestampWithoutTimeZone,
+          columnType: _isp.ColumnType.timestampWithoutTimeZone,
           isNullable: false,
           dartType: 'DateTime',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'accessLevelId',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
         ),
       ],
       foreignKeys: [
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'datetime_attributes_fk_0',
           columns: ['accessLevelId'],
           referenceTable: 'access_levels',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
       ],
-      indexes: [
-        _i2.IndexDefinition(
-          indexName: 'datetime_attributes_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-      ],
+      indexes: [],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'entities',
       dartName: 'Entity',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'listingAttribute',
-          columnType: _i2.ColumnType.json,
+          columnType: _isp.ColumnType.json,
           isNullable: false,
           dartType: '(String, String,)',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'attributesOrder',
-          columnType: _i2.ColumnType.json,
+          columnType: _isp.ColumnType.json,
           isNullable: false,
           dartType: 'List<(int, String,)>',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'textAttributes',
-          columnType: _i2.ColumnType.json,
+          columnType: _isp.ColumnType.json,
           isNullable: false,
           dartType: 'List<protocol:TextAttribute>',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'numberAttributes',
-          columnType: _i2.ColumnType.json,
+          columnType: _isp.ColumnType.json,
           isNullable: false,
           dartType: 'List<protocol:NumberAttribute>',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'boolAttributes',
-          columnType: _i2.ColumnType.json,
+          columnType: _isp.ColumnType.json,
           isNullable: false,
           dartType: 'List<protocol:BoolAttribute>',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'dateAttributes',
-          columnType: _i2.ColumnType.json,
+          columnType: _isp.ColumnType.json,
           isNullable: false,
           dartType: 'List<protocol:DateAttribute>',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'dateTimeAttributes',
-          columnType: _i2.ColumnType.json,
+          columnType: _isp.ColumnType.json,
           isNullable: false,
           dartType: 'List<protocol:DateTimeAttribute>',
         ),
       ],
       foreignKeys: [],
-      indexes: [
-        _i2.IndexDefinition(
-          indexName: 'entities_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-      ],
+      indexes: [],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'entity_links',
       dartName: 'EntityLink',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'orderIdx',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'sourceId',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'targetId',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue',
         ),
       ],
       foreignKeys: [
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'entity_links_fk_0',
           columns: ['sourceId'],
           referenceTable: 'entities',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'entity_links_fk_1',
           columns: ['targetId'],
           referenceTable: 'entities',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
       ],
-      indexes: [
-        _i2.IndexDefinition(
-          indexName: 'entity_links_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-      ],
+      indexes: [],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'entity_tmpl_attributes',
       dartName: 'EntityTmplAttribute',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int?',
-          columnDefault: 'nextval(\'entity_tmpl_attributes_id_seq\'::regclass)',
+          columnDefault: 'serial',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'entityTmplId',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'attributeTmplId',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'orderIdx',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
         ),
       ],
       foreignKeys: [
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'entity_tmpl_attributes_fk_0',
           columns: ['entityTmplId'],
           referenceTable: 'entity_tmpls',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'entity_tmpl_attributes_fk_1',
           columns: ['attributeTmplId'],
           referenceTable: 'attribute_tmpls',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
       ],
       indexes: [
-        _i2.IndexDefinition(
-          indexName: 'entity_tmpl_attributes_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-        _i2.IndexDefinition(
+        _isp.IndexDefinition(
           indexName: 'entity_tmpl_attribute_unique_idx',
           tableSpace: null,
           elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'entityTmplId',
             ),
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'attributeTmplId',
             ),
           ],
@@ -686,16 +682,16 @@ class Protocol extends _i1.SerializationManagerServer {
           isUnique: true,
           isPrimary: false,
         ),
-        _i2.IndexDefinition(
+        _isp.IndexDefinition(
           indexName: 'entity_tmpl_attribute_order_idx_unique_idx',
           tableSpace: null,
           elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'entityTmplId',
             ),
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'orderIdx',
             ),
           ],
@@ -706,96 +702,83 @@ class Protocol extends _i1.SerializationManagerServer {
       ],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'entity_tmpl_links',
       dartName: 'EntityTmplLink',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'orderIdx',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'sourceId',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'targetId',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue',
         ),
       ],
       foreignKeys: [
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'entity_tmpl_links_fk_0',
           columns: ['sourceId'],
           referenceTable: 'entity_tmpls',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'entity_tmpl_links_fk_1',
           columns: ['targetId'],
           referenceTable: 'entity_tmpls',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
       ],
       indexes: [
-        _i2.IndexDefinition(
-          indexName: 'entity_tmpl_links_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-        _i2.IndexDefinition(
+        _isp.IndexDefinition(
           indexName: 'entity_link_tmpl_source_name_uniq_idx',
           tableSpace: null,
           elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'sourceId',
             ),
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'name',
             ),
           ],
@@ -806,57 +789,44 @@ class Protocol extends _i1.SerializationManagerServer {
       ],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'entity_tmpls',
       dartName: 'EntityTmpl',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
       ],
       foreignKeys: [],
       indexes: [
-        _i2.IndexDefinition(
-          indexName: 'entity_tmpls_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-        _i2.IndexDefinition(
+        _isp.IndexDefinition(
           indexName: 'entity_tmpl_name_desc_uniq_idx',
           tableSpace: null,
           elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'name',
             ),
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
+            _isp.IndexElementDefinition(
+              type: _isp.IndexElementDefinitionType.column,
               definition: 'description',
             ),
           ],
@@ -867,162 +837,128 @@ class Protocol extends _i1.SerializationManagerServer {
       ],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'number_attributes',
       dartName: 'NumberAttribute',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'valueType',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'protocol:ValueType',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'value',
-          columnType: _i2.ColumnType.doublePrecision,
+          columnType: _isp.ColumnType.doublePrecision,
           isNullable: false,
           dartType: 'double',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'accessLevelId',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
         ),
       ],
       foreignKeys: [
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'number_attributes_fk_0',
           columns: ['accessLevelId'],
           referenceTable: 'access_levels',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
       ],
-      indexes: [
-        _i2.IndexDefinition(
-          indexName: 'number_attributes_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-      ],
+      indexes: [],
       managed: true,
     ),
-    _i2.TableDefinition(
+    _isp.TableDefinition(
       name: 'text_attributes',
       dartName: 'TextAttribute',
       schema: 'public',
       module: 'akasha',
       columns: [
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'id',
-          columnType: _i2.ColumnType.uuid,
+          columnType: _isp.ColumnType.uuid,
           isNullable: false,
           dartType: 'UuidValue?',
-          columnDefault: 'gen_random_uuid_v7()',
+          columnDefault: 'random_v7',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'name',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'description',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: true,
           dartType: 'String?',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'valueType',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'protocol:ValueType',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'value',
-          columnType: _i2.ColumnType.text,
+          columnType: _isp.ColumnType.text,
           isNullable: false,
           dartType: 'String',
         ),
-        _i2.ColumnDefinition(
+        _isp.ColumnDefinition(
           name: 'accessLevelId',
-          columnType: _i2.ColumnType.bigint,
+          columnType: _isp.ColumnType.bigint,
           isNullable: false,
           dartType: 'int',
         ),
       ],
       foreignKeys: [
-        _i2.ForeignKeyDefinition(
+        _isp.ForeignKeyDefinition(
           constraintName: 'text_attributes_fk_0',
           columns: ['accessLevelId'],
           referenceTable: 'access_levels',
           referenceTableSchema: 'public',
           referenceColumns: ['id'],
-          onUpdate: _i2.ForeignKeyAction.noAction,
-          onDelete: _i2.ForeignKeyAction.noAction,
+          onUpdate: _isp.ForeignKeyAction.noAction,
+          onDelete: _isp.ForeignKeyAction.noAction,
           matchType: null,
         ),
       ],
-      indexes: [
-        _i2.IndexDefinition(
-          indexName: 'text_attributes_pkey',
-          tableSpace: null,
-          elements: [
-            _i2.IndexElementDefinition(
-              type: _i2.IndexElementDefinitionType.column,
-              definition: 'id',
-            ),
-          ],
-          type: 'btree',
-          isUnique: true,
-          isPrimary: true,
-        ),
-      ],
+      indexes: [],
       managed: true,
     ),
-    ..._i3.Protocol.targetTableDefinitions,
-    ..._i4.Protocol.targetTableDefinitions,
-    ..._i2.Protocol.targetTableDefinitions,
   ];
 
-  static String? getClassNameFromObjectJson(dynamic data) {
-    if (data is! Map) return null;
-    final className = data['__className__'] as String?;
-    return className;
-  }
+  static String? getClassNameFromObjectJson(dynamic data) =>
+      _is.ProtocolDeserialization.readClassName(data);
 
   @override
   T deserialize<T>(
@@ -1030,148 +966,162 @@ class Protocol extends _i1.SerializationManagerServer {
     Type? t,
   ]) {
     t ??= T;
-
-    final dataClassName = getClassNameFromObjectJson(data);
+    final rawDataClassName = _is.ProtocolDeserialization.readClassName(data);
+    final dataClassName = rawDataClassName;
     if (dataClassName != null && dataClassName != getClassNameForType(t)) {
       try {
         return deserializeByClassName({
           'className': dataClassName,
           'data': data,
         });
-      } on FormatException catch (_) {
+      } on _is.DeserializationClassNameNotFoundException catch (_) {
         // If the className is not recognized (e.g., older client receiving
         // data with a new subtype), fall back to deserializing without the
         // className, using the expected type T.
       }
     }
 
-    if (t == _i5.AccessLevel) {
-      return _i5.AccessLevel.fromJson(data) as T;
+    if (t == _iqdeqche.AccessLevel) {
+      return _iqdeqche.AccessLevel.fromJson(data) as T;
     }
-    if (t == _i6.AccessLevelApiResponse) {
-      return _i6.AccessLevelApiResponse.fromJson(data) as T;
+    if (t == _ivq36grj.AccessLevelApiResponse) {
+      return _ivq36grj.AccessLevelApiResponse.fromJson(data) as T;
     }
-    if (t == _i7.BoolAttribute) {
-      return _i7.BoolAttribute.fromJson(data) as T;
+    if (t == _iohvvqe6.BoolAttribute) {
+      return _iohvvqe6.BoolAttribute.fromJson(data) as T;
     }
-    if (t == _i8.DateAttribute) {
-      return _i8.DateAttribute.fromJson(data) as T;
+    if (t == _i0ldqs5e.DateAttribute) {
+      return _i0ldqs5e.DateAttribute.fromJson(data) as T;
     }
-    if (t == _i9.DateTimeAttribute) {
-      return _i9.DateTimeAttribute.fromJson(data) as T;
+    if (t == _i70ost6n.DateTimeAttribute) {
+      return _i70ost6n.DateTimeAttribute.fromJson(data) as T;
     }
-    if (t == _i10.NumberAttribute) {
-      return _i10.NumberAttribute.fromJson(data) as T;
+    if (t == _i9j261aq.NumberAttribute) {
+      return _i9j261aq.NumberAttribute.fromJson(data) as T;
     }
-    if (t == _i11.TextAttribute) {
-      return _i11.TextAttribute.fromJson(data) as T;
+    if (t == _i98yaqko.TextAttribute) {
+      return _i98yaqko.TextAttribute.fromJson(data) as T;
     }
-    if (t == _i12.Attribute) {
-      return _i12.Attribute.fromJson(data) as T;
+    if (t == _imvasoiw.Attribute) {
+      return _imvasoiw.Attribute.fromJson(data) as T;
     }
-    if (t == _i13.AttributeTmpl) {
-      return _i13.AttributeTmpl.fromJson(data) as T;
+    if (t == _iaibcu4j.AttributeTmpl) {
+      return _iaibcu4j.AttributeTmpl.fromJson(data) as T;
     }
-    if (t == _i14.AttributeTmplApiResponse) {
-      return _i14.AttributeTmplApiResponse.fromJson(data) as T;
+    if (t == _iheicol0.AttributeTmplApiResponse) {
+      return _iheicol0.AttributeTmplApiResponse.fromJson(data) as T;
     }
-    if (t == _i15.Entity) {
-      return _i15.Entity.fromJson(data) as T;
+    if (t == _ix1pqi7m.Entity) {
+      return _ix1pqi7m.Entity.fromJson(data) as T;
     }
-    if (t == _i16.EntityApiResponse) {
-      return _i16.EntityApiResponse.fromJson(data) as T;
+    if (t == _igvxc25l.EntityApiResponse) {
+      return _igvxc25l.EntityApiResponse.fromJson(data) as T;
     }
-    if (t == _i17.EntityLink) {
-      return _i17.EntityLink.fromJson(data) as T;
+    if (t == _ifd3k20o.EntityLink) {
+      return _ifd3k20o.EntityLink.fromJson(data) as T;
     }
-    if (t == _i18.EntityTmpl) {
-      return _i18.EntityTmpl.fromJson(data) as T;
+    if (t == _iu5yu710.EntityTmpl) {
+      return _iu5yu710.EntityTmpl.fromJson(data) as T;
     }
-    if (t == _i19.EntityTmplApiResponse) {
-      return _i19.EntityTmplApiResponse.fromJson(data) as T;
+    if (t == _ixcorsp0.EntityTmplApiResponse) {
+      return _ixcorsp0.EntityTmplApiResponse.fromJson(data) as T;
     }
-    if (t == _i20.EntityTmplAttribute) {
-      return _i20.EntityTmplAttribute.fromJson(data) as T;
+    if (t == _ioae6byd.EntityTmplAttribute) {
+      return _ioae6byd.EntityTmplAttribute.fromJson(data) as T;
     }
-    if (t == _i21.EntityTmplLink) {
-      return _i21.EntityTmplLink.fromJson(data) as T;
+    if (t == _iq4c1nxl.EntityTmplLink) {
+      return _iq4c1nxl.EntityTmplLink.fromJson(data) as T;
     }
-    if (t == _i22.ApiException) {
-      return _i22.ApiException.fromJson(data) as T;
+    if (t == _imk1ye7t.ApiException) {
+      return _imk1ye7t.ApiException.fromJson(data) as T;
     }
-    if (t == _i23.HasId) {
-      return _i23.HasId.fromJson(data) as T;
+    if (t == _in58sj53.HasId) {
+      return _in58sj53.HasId.fromJson(data) as T;
     }
-    if (t == _i24.ValueType) {
-      return _i24.ValueType.fromJson(data) as T;
+    if (t == _i726e7o0.ValueType) {
+      return _i726e7o0.ValueType.fromJson(data) as T;
     }
-    if (t == _i1.getType<_i5.AccessLevel?>()) {
-      return (data != null ? _i5.AccessLevel.fromJson(data) : null) as T;
+    if (t == _is.getType<_iqdeqche.AccessLevel?>()) {
+      return (data != null ? _iqdeqche.AccessLevel.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i6.AccessLevelApiResponse?>()) {
-      return (data != null ? _i6.AccessLevelApiResponse.fromJson(data) : null)
-          as T;
-    }
-    if (t == _i1.getType<_i7.BoolAttribute?>()) {
-      return (data != null ? _i7.BoolAttribute.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i8.DateAttribute?>()) {
-      return (data != null ? _i8.DateAttribute.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i9.DateTimeAttribute?>()) {
-      return (data != null ? _i9.DateTimeAttribute.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i10.NumberAttribute?>()) {
-      return (data != null ? _i10.NumberAttribute.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i11.TextAttribute?>()) {
-      return (data != null ? _i11.TextAttribute.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i12.Attribute?>()) {
-      return (data != null ? _i12.Attribute.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i13.AttributeTmpl?>()) {
-      return (data != null ? _i13.AttributeTmpl.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i14.AttributeTmplApiResponse?>()) {
+    if (t == _is.getType<_ivq36grj.AccessLevelApiResponse?>()) {
       return (data != null
-              ? _i14.AttributeTmplApiResponse.fromJson(data)
+              ? _ivq36grj.AccessLevelApiResponse.fromJson(data)
               : null)
           as T;
     }
-    if (t == _i1.getType<_i15.Entity?>()) {
-      return (data != null ? _i15.Entity.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i16.EntityApiResponse?>()) {
-      return (data != null ? _i16.EntityApiResponse.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i17.EntityLink?>()) {
-      return (data != null ? _i17.EntityLink.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i18.EntityTmpl?>()) {
-      return (data != null ? _i18.EntityTmpl.fromJson(data) : null) as T;
-    }
-    if (t == _i1.getType<_i19.EntityTmplApiResponse?>()) {
-      return (data != null ? _i19.EntityTmplApiResponse.fromJson(data) : null)
+    if (t == _is.getType<_iohvvqe6.BoolAttribute?>()) {
+      return (data != null ? _iohvvqe6.BoolAttribute.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i20.EntityTmplAttribute?>()) {
-      return (data != null ? _i20.EntityTmplAttribute.fromJson(data) : null)
+    if (t == _is.getType<_i0ldqs5e.DateAttribute?>()) {
+      return (data != null ? _i0ldqs5e.DateAttribute.fromJson(data) : null)
           as T;
     }
-    if (t == _i1.getType<_i21.EntityTmplLink?>()) {
-      return (data != null ? _i21.EntityTmplLink.fromJson(data) : null) as T;
+    if (t == _is.getType<_i70ost6n.DateTimeAttribute?>()) {
+      return (data != null ? _i70ost6n.DateTimeAttribute.fromJson(data) : null)
+          as T;
     }
-    if (t == _i1.getType<_i22.ApiException?>()) {
-      return (data != null ? _i22.ApiException.fromJson(data) : null) as T;
+    if (t == _is.getType<_i9j261aq.NumberAttribute?>()) {
+      return (data != null ? _i9j261aq.NumberAttribute.fromJson(data) : null)
+          as T;
     }
-    if (t == _i1.getType<_i23.HasId?>()) {
-      return (data != null ? _i23.HasId.fromJson(data) : null) as T;
+    if (t == _is.getType<_i98yaqko.TextAttribute?>()) {
+      return (data != null ? _i98yaqko.TextAttribute.fromJson(data) : null)
+          as T;
     }
-    if (t == _i1.getType<_i24.ValueType?>()) {
-      return (data != null ? _i24.ValueType.fromJson(data) : null) as T;
+    if (t == _is.getType<_imvasoiw.Attribute?>()) {
+      return (data != null ? _imvasoiw.Attribute.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<(String, String)>()) {
+    if (t == _is.getType<_iaibcu4j.AttributeTmpl?>()) {
+      return (data != null ? _iaibcu4j.AttributeTmpl.fromJson(data) : null)
+          as T;
+    }
+    if (t == _is.getType<_iheicol0.AttributeTmplApiResponse?>()) {
+      return (data != null
+              ? _iheicol0.AttributeTmplApiResponse.fromJson(data)
+              : null)
+          as T;
+    }
+    if (t == _is.getType<_ix1pqi7m.Entity?>()) {
+      return (data != null ? _ix1pqi7m.Entity.fromJson(data) : null) as T;
+    }
+    if (t == _is.getType<_igvxc25l.EntityApiResponse?>()) {
+      return (data != null ? _igvxc25l.EntityApiResponse.fromJson(data) : null)
+          as T;
+    }
+    if (t == _is.getType<_ifd3k20o.EntityLink?>()) {
+      return (data != null ? _ifd3k20o.EntityLink.fromJson(data) : null) as T;
+    }
+    if (t == _is.getType<_iu5yu710.EntityTmpl?>()) {
+      return (data != null ? _iu5yu710.EntityTmpl.fromJson(data) : null) as T;
+    }
+    if (t == _is.getType<_ixcorsp0.EntityTmplApiResponse?>()) {
+      return (data != null
+              ? _ixcorsp0.EntityTmplApiResponse.fromJson(data)
+              : null)
+          as T;
+    }
+    if (t == _is.getType<_ioae6byd.EntityTmplAttribute?>()) {
+      return (data != null
+              ? _ioae6byd.EntityTmplAttribute.fromJson(data)
+              : null)
+          as T;
+    }
+    if (t == _is.getType<_iq4c1nxl.EntityTmplLink?>()) {
+      return (data != null ? _iq4c1nxl.EntityTmplLink.fromJson(data) : null)
+          as T;
+    }
+    if (t == _is.getType<_imk1ye7t.ApiException?>()) {
+      return (data != null ? _imk1ye7t.ApiException.fromJson(data) : null) as T;
+    }
+    if (t == _is.getType<_in58sj53.HasId?>()) {
+      return (data != null ? _in58sj53.HasId.fromJson(data) : null) as T;
+    }
+    if (t == _is.getType<_i726e7o0.ValueType?>()) {
+      return (data != null ? _i726e7o0.ValueType.fromJson(data) : null) as T;
+    }
+    if (t == _is.getType<(String, String)>()) {
       return (
             deserialize<String>(((data as Map)['p'] as List)[0]),
             deserialize<String>(data['p'][1]),
@@ -1182,158 +1132,165 @@ class Protocol extends _i1.SerializationManagerServer {
       return (data as List).map((e) => deserialize<(int, String)>(e)).toList()
           as T;
     }
-    if (t == _i1.getType<(int, String)>()) {
+    if (t == _is.getType<(int, String)>()) {
       return (
             deserialize<int>(((data as Map)['p'] as List)[0]),
             deserialize<String>(data['p'][1]),
           )
           as T;
     }
-    if (t == List<_i11.TextAttribute>) {
+    if (t == List<_i98yaqko.TextAttribute>) {
       return (data as List)
-              .map((e) => deserialize<_i11.TextAttribute>(e))
+              .map((e) => deserialize<_i98yaqko.TextAttribute>(e))
               .toList()
           as T;
     }
-    if (t == List<_i10.NumberAttribute>) {
+    if (t == List<_i9j261aq.NumberAttribute>) {
       return (data as List)
-              .map((e) => deserialize<_i10.NumberAttribute>(e))
+              .map((e) => deserialize<_i9j261aq.NumberAttribute>(e))
               .toList()
           as T;
     }
-    if (t == List<_i7.BoolAttribute>) {
+    if (t == List<_iohvvqe6.BoolAttribute>) {
       return (data as List)
-              .map((e) => deserialize<_i7.BoolAttribute>(e))
+              .map((e) => deserialize<_iohvvqe6.BoolAttribute>(e))
               .toList()
           as T;
     }
-    if (t == List<_i8.DateAttribute>) {
+    if (t == List<_i0ldqs5e.DateAttribute>) {
       return (data as List)
-              .map((e) => deserialize<_i8.DateAttribute>(e))
+              .map((e) => deserialize<_i0ldqs5e.DateAttribute>(e))
               .toList()
           as T;
     }
-    if (t == List<_i9.DateTimeAttribute>) {
+    if (t == List<_i70ost6n.DateTimeAttribute>) {
       return (data as List)
-              .map((e) => deserialize<_i9.DateTimeAttribute>(e))
+              .map((e) => deserialize<_i70ost6n.DateTimeAttribute>(e))
               .toList()
           as T;
     }
-    if (t == List<_i17.EntityLink>) {
-      return (data as List).map((e) => deserialize<_i17.EntityLink>(e)).toList()
+    if (t == List<_ifd3k20o.EntityLink>) {
+      return (data as List)
+              .map((e) => deserialize<_ifd3k20o.EntityLink>(e))
+              .toList()
           as T;
     }
-    if (t == _i1.getType<List<_i17.EntityLink>?>()) {
+    if (t == _is.getType<List<_ifd3k20o.EntityLink>?>()) {
       return (data != null
               ? (data as List)
-                    .map((e) => deserialize<_i17.EntityLink>(e))
+                    .map((e) => deserialize<_ifd3k20o.EntityLink>(e))
                     .toList()
               : null)
           as T;
     }
-    if (t == List<_i20.EntityTmplAttribute>) {
+    if (t == List<_ioae6byd.EntityTmplAttribute>) {
       return (data as List)
-              .map((e) => deserialize<_i20.EntityTmplAttribute>(e))
+              .map((e) => deserialize<_ioae6byd.EntityTmplAttribute>(e))
               .toList()
           as T;
     }
-    if (t == _i1.getType<List<_i20.EntityTmplAttribute>?>()) {
+    if (t == _is.getType<List<_ioae6byd.EntityTmplAttribute>?>()) {
       return (data != null
               ? (data as List)
-                    .map((e) => deserialize<_i20.EntityTmplAttribute>(e))
+                    .map((e) => deserialize<_ioae6byd.EntityTmplAttribute>(e))
                     .toList()
               : null)
           as T;
     }
-    if (t == List<_i21.EntityTmplLink>) {
+    if (t == List<_iq4c1nxl.EntityTmplLink>) {
       return (data as List)
-              .map((e) => deserialize<_i21.EntityTmplLink>(e))
+              .map((e) => deserialize<_iq4c1nxl.EntityTmplLink>(e))
               .toList()
           as T;
     }
-    if (t == _i1.getType<List<_i21.EntityTmplLink>?>()) {
+    if (t == _is.getType<List<_iq4c1nxl.EntityTmplLink>?>()) {
       return (data != null
               ? (data as List)
-                    .map((e) => deserialize<_i21.EntityTmplLink>(e))
+                    .map((e) => deserialize<_iq4c1nxl.EntityTmplLink>(e))
                     .toList()
               : null)
           as T;
     }
-    if (t == List<_i25.AccessLevel>) {
+    if (t == List<_io8zdy2p.AccessLevel>) {
       return (data as List)
-              .map((e) => deserialize<_i25.AccessLevel>(e))
+              .map((e) => deserialize<_io8zdy2p.AccessLevel>(e))
               .toList()
           as T;
     }
-    if (t == List<_i26.AttributeTmpl>) {
+    if (t == List<_igudksr2.AttributeTmpl>) {
       return (data as List)
-              .map((e) => deserialize<_i26.AttributeTmpl>(e))
+              .map((e) => deserialize<_igudksr2.AttributeTmpl>(e))
               .toList()
           as T;
     }
-    if (t == List<_i27.Entity>) {
-      return (data as List).map((e) => deserialize<_i27.Entity>(e)).toList()
+    if (t == List<_ix04eq4k.Entity>) {
+      return (data as List)
+              .map((e) => deserialize<_ix04eq4k.Entity>(e))
+              .toList()
           as T;
     }
-    if (t == List<_i28.EntityTmpl>) {
-      return (data as List).map((e) => deserialize<_i28.EntityTmpl>(e)).toList()
+    if (t == List<_ikg1bwga.EntityTmpl>) {
+      return (data as List)
+              .map((e) => deserialize<_ikg1bwga.EntityTmpl>(e))
+              .toList()
           as T;
     }
-    if (t == _i1.getType<(String, String)>()) {
+    if (t == _is.getType<(String, String)>()) {
       return (
             deserialize<String>(((data as Map)['p'] as List)[0]),
             deserialize<String>(data['p'][1]),
           )
           as T;
     }
-    if (t == _i1.getType<(int, String)>()) {
+    if (t == _is.getType<(int, String)>()) {
       return (
             deserialize<int>(((data as Map)['p'] as List)[0]),
             deserialize<String>(data['p'][1]),
           )
           as T;
     }
-    if (t == _i1.getType<(int, String)>()) {
+    if (t == _is.getType<(int, String)>()) {
       return (
             deserialize<int>(((data as Map)['p'] as List)[0]),
             deserialize<String>(data['p'][1]),
           )
           as T;
     }
-    try {
-      return _i3.Protocol().deserialize<T>(data, t);
-    } on _i1.DeserializationTypeNotFoundException catch (_) {}
-    try {
-      return _i4.Protocol().deserialize<T>(data, t);
-    } on _i1.DeserializationTypeNotFoundException catch (_) {}
-    try {
-      return _i2.Protocol().deserialize<T>(data, t);
-    } on _i1.DeserializationTypeNotFoundException catch (_) {}
+    final modules = deserializationMetadata.modulesForDeserialization(
+      t,
+      className: rawDataClassName,
+    );
+    for (final module in modules) {
+      try {
+        return module.deserialize<T>(data, t);
+      } on _is.DeserializationTypeNotFoundException catch (_) {}
+    }
+
     return super.deserialize<T>(data, t);
   }
 
   static String? getClassNameForType(Type type) {
     return switch (type) {
-      _i5.AccessLevel => 'AccessLevel',
-      _i6.AccessLevelApiResponse => 'AccessLevelApiResponse',
-      _i7.BoolAttribute => 'BoolAttribute',
-      _i8.DateAttribute => 'DateAttribute',
-      _i9.DateTimeAttribute => 'DateTimeAttribute',
-      _i10.NumberAttribute => 'NumberAttribute',
-      _i11.TextAttribute => 'TextAttribute',
-      _i12.Attribute => 'Attribute',
-      _i13.AttributeTmpl => 'AttributeTmpl',
-      _i14.AttributeTmplApiResponse => 'AttributeTmplApiResponse',
-      _i15.Entity => 'Entity',
-      _i16.EntityApiResponse => 'EntityApiResponse',
-      _i17.EntityLink => 'EntityLink',
-      _i18.EntityTmpl => 'EntityTmpl',
-      _i19.EntityTmplApiResponse => 'EntityTmplApiResponse',
-      _i20.EntityTmplAttribute => 'EntityTmplAttribute',
-      _i21.EntityTmplLink => 'EntityTmplLink',
-      _i22.ApiException => 'ApiException',
-      _i23.HasId => 'HasId',
-      _i24.ValueType => 'ValueType',
+      _iqdeqche.AccessLevel => 'AccessLevel',
+      _ivq36grj.AccessLevelApiResponse => 'AccessLevelApiResponse',
+      _iohvvqe6.BoolAttribute => 'BoolAttribute',
+      _i0ldqs5e.DateAttribute => 'DateAttribute',
+      _i70ost6n.DateTimeAttribute => 'DateTimeAttribute',
+      _i9j261aq.NumberAttribute => 'NumberAttribute',
+      _i98yaqko.TextAttribute => 'TextAttribute',
+      _imvasoiw.Attribute => 'Attribute',
+      _iaibcu4j.AttributeTmpl => 'AttributeTmpl',
+      _iheicol0.AttributeTmplApiResponse => 'AttributeTmplApiResponse',
+      _ix1pqi7m.Entity => 'Entity',
+      _igvxc25l.EntityApiResponse => 'EntityApiResponse',
+      _ifd3k20o.EntityLink => 'EntityLink',
+      _iu5yu710.EntityTmpl => 'EntityTmpl',
+      _ixcorsp0.EntityTmplApiResponse => 'EntityTmplApiResponse',
+      _ioae6byd.EntityTmplAttribute => 'EntityTmplAttribute',
+      _iq4c1nxl.EntityTmplLink => 'EntityTmplLink',
+      _imk1ye7t.ApiException => 'ApiException',
+      _in58sj53.HasId => 'HasId',
+      _i726e7o0.ValueType => 'ValueType',
       _ => null,
     };
   }
@@ -1348,58 +1305,62 @@ class Protocol extends _i1.SerializationManagerServer {
     }
 
     switch (data) {
-      case _i5.AccessLevel():
+      case _iqdeqche.AccessLevel():
         return 'AccessLevel';
-      case _i6.AccessLevelApiResponse():
+      case _ivq36grj.AccessLevelApiResponse():
         return 'AccessLevelApiResponse';
-      case _i7.BoolAttribute():
+      case _iohvvqe6.BoolAttribute():
         return 'BoolAttribute';
-      case _i8.DateAttribute():
+      case _i0ldqs5e.DateAttribute():
         return 'DateAttribute';
-      case _i9.DateTimeAttribute():
+      case _i70ost6n.DateTimeAttribute():
         return 'DateTimeAttribute';
-      case _i10.NumberAttribute():
+      case _i9j261aq.NumberAttribute():
         return 'NumberAttribute';
-      case _i11.TextAttribute():
+      case _i98yaqko.TextAttribute():
         return 'TextAttribute';
-      case _i12.Attribute():
+      case _imvasoiw.Attribute():
         return 'Attribute';
-      case _i13.AttributeTmpl():
+      case _iaibcu4j.AttributeTmpl():
         return 'AttributeTmpl';
-      case _i14.AttributeTmplApiResponse():
+      case _iheicol0.AttributeTmplApiResponse():
         return 'AttributeTmplApiResponse';
-      case _i15.Entity():
+      case _ix1pqi7m.Entity():
         return 'Entity';
-      case _i16.EntityApiResponse():
+      case _igvxc25l.EntityApiResponse():
         return 'EntityApiResponse';
-      case _i17.EntityLink():
+      case _ifd3k20o.EntityLink():
         return 'EntityLink';
-      case _i18.EntityTmpl():
+      case _iu5yu710.EntityTmpl():
         return 'EntityTmpl';
-      case _i19.EntityTmplApiResponse():
+      case _ixcorsp0.EntityTmplApiResponse():
         return 'EntityTmplApiResponse';
-      case _i20.EntityTmplAttribute():
+      case _ioae6byd.EntityTmplAttribute():
         return 'EntityTmplAttribute';
-      case _i21.EntityTmplLink():
+      case _iq4c1nxl.EntityTmplLink():
         return 'EntityTmplLink';
-      case _i22.ApiException():
+      case _imk1ye7t.ApiException():
         return 'ApiException';
-      case _i23.HasId():
+      case _in58sj53.HasId():
         return 'HasId';
-      case _i24.ValueType():
+      case _i726e7o0.ValueType():
         return 'ValueType';
     }
-    className = _i2.Protocol().getClassNameForObject(data);
+    className = _iais.Protocol().getClassNameForObject(data);
     if (className != null) {
-      return 'serverpod.$className';
+      return className.contains('.')
+          ? className
+          : 'serverpod_auth_idp.$className';
     }
-    className = _i3.Protocol().getClassNameForObject(data);
+    className = _iacs.Protocol().getClassNameForObject(data);
     if (className != null) {
-      return 'serverpod_auth_idp.$className';
+      return className.contains('.')
+          ? className
+          : 'serverpod_auth_core.$className';
     }
-    className = _i4.Protocol().getClassNameForObject(data);
+    className = _isp.Protocol().getClassNameForObject(data);
     if (className != null) {
-      return 'serverpod_auth_core.$className';
+      return className.contains('.') ? className : 'serverpod.$className';
     }
     return null;
   }
@@ -1411,132 +1372,146 @@ class Protocol extends _i1.SerializationManagerServer {
       return super.deserializeByClassName(data);
     }
     if (dataClassName == 'AccessLevel') {
-      return deserialize<_i5.AccessLevel>(data['data']);
+      return deserialize<_iqdeqche.AccessLevel>(data['data']);
     }
     if (dataClassName == 'AccessLevelApiResponse') {
-      return deserialize<_i6.AccessLevelApiResponse>(data['data']);
+      return deserialize<_ivq36grj.AccessLevelApiResponse>(data['data']);
     }
     if (dataClassName == 'BoolAttribute') {
-      return deserialize<_i7.BoolAttribute>(data['data']);
+      return deserialize<_iohvvqe6.BoolAttribute>(data['data']);
     }
     if (dataClassName == 'DateAttribute') {
-      return deserialize<_i8.DateAttribute>(data['data']);
+      return deserialize<_i0ldqs5e.DateAttribute>(data['data']);
     }
     if (dataClassName == 'DateTimeAttribute') {
-      return deserialize<_i9.DateTimeAttribute>(data['data']);
+      return deserialize<_i70ost6n.DateTimeAttribute>(data['data']);
     }
     if (dataClassName == 'NumberAttribute') {
-      return deserialize<_i10.NumberAttribute>(data['data']);
+      return deserialize<_i9j261aq.NumberAttribute>(data['data']);
     }
     if (dataClassName == 'TextAttribute') {
-      return deserialize<_i11.TextAttribute>(data['data']);
+      return deserialize<_i98yaqko.TextAttribute>(data['data']);
     }
     if (dataClassName == 'Attribute') {
-      return deserialize<_i12.Attribute>(data['data']);
+      return deserialize<_imvasoiw.Attribute>(data['data']);
     }
     if (dataClassName == 'AttributeTmpl') {
-      return deserialize<_i13.AttributeTmpl>(data['data']);
+      return deserialize<_iaibcu4j.AttributeTmpl>(data['data']);
     }
     if (dataClassName == 'AttributeTmplApiResponse') {
-      return deserialize<_i14.AttributeTmplApiResponse>(data['data']);
+      return deserialize<_iheicol0.AttributeTmplApiResponse>(data['data']);
     }
     if (dataClassName == 'Entity') {
-      return deserialize<_i15.Entity>(data['data']);
+      return deserialize<_ix1pqi7m.Entity>(data['data']);
     }
     if (dataClassName == 'EntityApiResponse') {
-      return deserialize<_i16.EntityApiResponse>(data['data']);
+      return deserialize<_igvxc25l.EntityApiResponse>(data['data']);
     }
     if (dataClassName == 'EntityLink') {
-      return deserialize<_i17.EntityLink>(data['data']);
+      return deserialize<_ifd3k20o.EntityLink>(data['data']);
     }
     if (dataClassName == 'EntityTmpl') {
-      return deserialize<_i18.EntityTmpl>(data['data']);
+      return deserialize<_iu5yu710.EntityTmpl>(data['data']);
     }
     if (dataClassName == 'EntityTmplApiResponse') {
-      return deserialize<_i19.EntityTmplApiResponse>(data['data']);
+      return deserialize<_ixcorsp0.EntityTmplApiResponse>(data['data']);
     }
     if (dataClassName == 'EntityTmplAttribute') {
-      return deserialize<_i20.EntityTmplAttribute>(data['data']);
+      return deserialize<_ioae6byd.EntityTmplAttribute>(data['data']);
     }
     if (dataClassName == 'EntityTmplLink') {
-      return deserialize<_i21.EntityTmplLink>(data['data']);
+      return deserialize<_iq4c1nxl.EntityTmplLink>(data['data']);
     }
     if (dataClassName == 'ApiException') {
-      return deserialize<_i22.ApiException>(data['data']);
+      return deserialize<_imk1ye7t.ApiException>(data['data']);
     }
     if (dataClassName == 'HasId') {
-      return deserialize<_i23.HasId>(data['data']);
+      return deserialize<_in58sj53.HasId>(data['data']);
     }
     if (dataClassName == 'ValueType') {
-      return deserialize<_i24.ValueType>(data['data']);
-    }
-    if (dataClassName.startsWith('serverpod.')) {
-      data['className'] = dataClassName.substring(10);
-      return _i2.Protocol().deserializeByClassName(data);
+      return deserialize<_i726e7o0.ValueType>(data['data']);
     }
     if (dataClassName.startsWith('serverpod_auth_idp.')) {
-      data['className'] = dataClassName.substring(19);
-      return _i3.Protocol().deserializeByClassName(data);
+      return _iais.Protocol().deserializeByClassName({
+        ...data,
+        'className': dataClassName.substring(19),
+      });
     }
     if (dataClassName.startsWith('serverpod_auth_core.')) {
-      data['className'] = dataClassName.substring(20);
-      return _i4.Protocol().deserializeByClassName(data);
+      return _iacs.Protocol().deserializeByClassName({
+        ...data,
+        'className': dataClassName.substring(20),
+      });
+    }
+    if (dataClassName.startsWith('serverpod.')) {
+      return _isp.Protocol().deserializeByClassName({
+        ...data,
+        'className': dataClassName.substring(10),
+      });
     }
     return super.deserializeByClassName(data);
   }
 
+  void _registerHostProtocols() {
+    _iais.Protocol().registerHostProtocol('akasha', this);
+    _iacs.Protocol().registerHostProtocol('akasha', this);
+  }
+
   @override
-  _i1.Table? getTableForType(Type t) {
+  _is.Table? getTableForType(Type t) {
     {
-      var table = _i3.Protocol().getTableForType(t);
+      var table = _iais.Protocol().getTableForType(t);
       if (table != null) {
         return table;
       }
     }
     {
-      var table = _i4.Protocol().getTableForType(t);
+      var table = _iacs.Protocol().getTableForType(t);
       if (table != null) {
         return table;
       }
     }
     {
-      var table = _i2.Protocol().getTableForType(t);
+      var table = _isp.Protocol().getTableForType(t);
       if (table != null) {
         return table;
       }
     }
     switch (t) {
-      case _i5.AccessLevel:
-        return _i5.AccessLevel.t;
-      case _i7.BoolAttribute:
-        return _i7.BoolAttribute.t;
-      case _i8.DateAttribute:
-        return _i8.DateAttribute.t;
-      case _i9.DateTimeAttribute:
-        return _i9.DateTimeAttribute.t;
-      case _i10.NumberAttribute:
-        return _i10.NumberAttribute.t;
-      case _i11.TextAttribute:
-        return _i11.TextAttribute.t;
-      case _i13.AttributeTmpl:
-        return _i13.AttributeTmpl.t;
-      case _i15.Entity:
-        return _i15.Entity.t;
-      case _i17.EntityLink:
-        return _i17.EntityLink.t;
-      case _i18.EntityTmpl:
-        return _i18.EntityTmpl.t;
-      case _i20.EntityTmplAttribute:
-        return _i20.EntityTmplAttribute.t;
-      case _i21.EntityTmplLink:
-        return _i21.EntityTmplLink.t;
+      case _iqdeqche.AccessLevel:
+        return _iqdeqche.AccessLevel.t;
+      case _iohvvqe6.BoolAttribute:
+        return _iohvvqe6.BoolAttribute.t;
+      case _i0ldqs5e.DateAttribute:
+        return _i0ldqs5e.DateAttribute.t;
+      case _i70ost6n.DateTimeAttribute:
+        return _i70ost6n.DateTimeAttribute.t;
+      case _i9j261aq.NumberAttribute:
+        return _i9j261aq.NumberAttribute.t;
+      case _i98yaqko.TextAttribute:
+        return _i98yaqko.TextAttribute.t;
+      case _iaibcu4j.AttributeTmpl:
+        return _iaibcu4j.AttributeTmpl.t;
+      case _ix1pqi7m.Entity:
+        return _ix1pqi7m.Entity.t;
+      case _ifd3k20o.EntityLink:
+        return _ifd3k20o.EntityLink.t;
+      case _iu5yu710.EntityTmpl:
+        return _iu5yu710.EntityTmpl.t;
+      case _ioae6byd.EntityTmplAttribute:
+        return _ioae6byd.EntityTmplAttribute.t;
+      case _iq4c1nxl.EntityTmplLink:
+        return _iq4c1nxl.EntityTmplLink.t;
     }
     return null;
   }
 
   @override
-  List<_i2.TableDefinition> getTargetTableDefinitions() =>
+  List<_isp.TableDefinition> getTargetTableDefinitions() =>
       targetTableDefinitions;
+
+  @override
+  List<_isp.TableDefinition> getOwnTableDefinitions() => _ownTableDefinitions;
 
   @override
   String getModuleName() => 'akasha';
@@ -1567,10 +1542,10 @@ class Protocol extends _i1.SerializationManagerServer {
       };
     }
     try {
-      return _i3.Protocol().mapRecordToJson(record);
+      return _iais.Protocol().mapRecordToJson(record);
     } catch (_) {}
     try {
-      return _i4.Protocol().mapRecordToJson(record);
+      return _iacs.Protocol().mapRecordToJson(record);
     } catch (_) {}
     throw Exception('Unsupported record type ${record.runtimeType}');
   }

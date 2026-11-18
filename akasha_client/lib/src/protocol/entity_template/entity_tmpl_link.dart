@@ -10,11 +10,12 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../entity_template/entity_tmpl.dart' as _i2;
-import 'package:akasha_client/src/protocol/protocol.dart' as _i3;
+import 'package:akasha_client/src/protocol/protocol.dart' as _ivaz2sz9;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
+import '../entity_template/entity_tmpl.dart' as _ik3dvlmp;
 
-abstract class EntityTmplLink implements _i1.SerializableModel {
+abstract class EntityTmplLink
+    implements _isc.SerializableModel, _isc.ProtocolSerialization {
   EntityTmplLink._({
     this.id,
     required this.name,
@@ -27,38 +28,38 @@ abstract class EntityTmplLink implements _i1.SerializableModel {
   });
 
   factory EntityTmplLink({
-    _i1.UuidValue? id,
+    _isc.UuidValue? id,
     required String name,
     String? description,
     required int orderIdx,
-    required _i1.UuidValue sourceId,
-    _i2.EntityTmpl? source,
-    required _i1.UuidValue targetId,
-    _i2.EntityTmpl? target,
+    required _isc.UuidValue sourceId,
+    _ik3dvlmp.EntityTmpl? source,
+    required _isc.UuidValue targetId,
+    _ik3dvlmp.EntityTmpl? target,
   }) = _EntityTmplLinkImpl;
 
   factory EntityTmplLink.fromJson(Map<String, dynamic> jsonSerialization) {
     return EntityTmplLink(
       id: jsonSerialization['id'] == null
           ? null
-          : _i1.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
+          : _isc.UuidValueJsonExtension.fromJson(jsonSerialization['id']),
       name: jsonSerialization['name'] as String,
       description: jsonSerialization['description'] as String?,
       orderIdx: jsonSerialization['orderIdx'] as int,
-      sourceId: _i1.UuidValueJsonExtension.fromJson(
+      sourceId: _isc.UuidValueJsonExtension.fromJson(
         jsonSerialization['sourceId'],
       ),
       source: jsonSerialization['source'] == null
           ? null
-          : _i3.Protocol().deserialize<_i2.EntityTmpl>(
+          : _ivaz2sz9.Protocol().deserialize<_ik3dvlmp.EntityTmpl>(
               jsonSerialization['source'],
             ),
-      targetId: _i1.UuidValueJsonExtension.fromJson(
+      targetId: _isc.UuidValueJsonExtension.fromJson(
         jsonSerialization['targetId'],
       ),
       target: jsonSerialization['target'] == null
           ? null
-          : _i3.Protocol().deserialize<_i2.EntityTmpl>(
+          : _ivaz2sz9.Protocol().deserialize<_ik3dvlmp.EntityTmpl>(
               jsonSerialization['target'],
             ),
     );
@@ -67,7 +68,7 @@ abstract class EntityTmplLink implements _i1.SerializableModel {
   /// The database id, set if the object has been inserted into the
   /// database or if it has been fetched from the database. Otherwise,
   /// the id will be null.
-  _i1.UuidValue? id;
+  _isc.UuidValue? id;
 
   String name;
 
@@ -75,28 +76,28 @@ abstract class EntityTmplLink implements _i1.SerializableModel {
 
   int orderIdx;
 
-  _i1.UuidValue sourceId;
+  _isc.UuidValue sourceId;
 
   /// The source of this entity link template.
-  _i2.EntityTmpl? source;
+  _ik3dvlmp.EntityTmpl? source;
 
-  _i1.UuidValue targetId;
+  _isc.UuidValue targetId;
 
   /// The target of this entity link template.
-  _i2.EntityTmpl? target;
+  _ik3dvlmp.EntityTmpl? target;
 
   /// Returns a shallow copy of this [EntityTmplLink]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   EntityTmplLink copyWith({
-    _i1.UuidValue? id,
+    _isc.UuidValue? id = const _isc.$UndefinedUuidValue(),
     String? name,
     String? description,
     int? orderIdx,
-    _i1.UuidValue? sourceId,
-    _i2.EntityTmpl? source,
-    _i1.UuidValue? targetId,
-    _i2.EntityTmpl? target,
+    _isc.UuidValue? sourceId,
+    _ik3dvlmp.EntityTmpl? source = const _UndefinedEntityTmplLink$source(),
+    _isc.UuidValue? targetId,
+    _ik3dvlmp.EntityTmpl? target = const _UndefinedEntityTmplLink$source(),
   });
   @override
   Map<String, dynamic> toJson() {
@@ -114,23 +115,43 @@ abstract class EntityTmplLink implements _i1.SerializableModel {
   }
 
   @override
+  Map<String, dynamic> toJsonForProtocol() {
+    return {
+      '__className__': 'EntityTmplLink',
+      if (id != null) 'id': id?.toJson(),
+      'name': name,
+      if (description != null) 'description': description,
+      'orderIdx': orderIdx,
+      'sourceId': sourceId.toJson(),
+      if (source != null) 'source': source?.toJsonForProtocol(),
+      'targetId': targetId.toJson(),
+      if (target != null) 'target': target?.toJsonForProtocol(),
+    };
+  }
+
+  @override
   String toString() {
-    return _i1.SerializationManager.encode(this);
+    return _isc.SerializationManager.encode(this);
   }
 }
 
 class _Undefined {}
 
+class _UndefinedEntityTmplLink$source extends _isc.UndefinedSentinel
+    implements _ik3dvlmp.EntityTmpl {
+  const _UndefinedEntityTmplLink$source();
+}
+
 class _EntityTmplLinkImpl extends EntityTmplLink {
   _EntityTmplLinkImpl({
-    _i1.UuidValue? id,
+    _isc.UuidValue? id,
     required String name,
     String? description,
     required int orderIdx,
-    required _i1.UuidValue sourceId,
-    _i2.EntityTmpl? source,
-    required _i1.UuidValue targetId,
-    _i2.EntityTmpl? target,
+    required _isc.UuidValue sourceId,
+    _ik3dvlmp.EntityTmpl? source,
+    required _isc.UuidValue targetId,
+    _ik3dvlmp.EntityTmpl? target,
   }) : super._(
          id: id,
          name: name,
@@ -144,27 +165,31 @@ class _EntityTmplLinkImpl extends EntityTmplLink {
 
   /// Returns a shallow copy of this [EntityTmplLink]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   @override
   EntityTmplLink copyWith({
-    Object? id = _Undefined,
+    _isc.UuidValue? id = const _isc.$UndefinedUuidValue(),
     String? name,
     Object? description = _Undefined,
     int? orderIdx,
-    _i1.UuidValue? sourceId,
-    Object? source = _Undefined,
-    _i1.UuidValue? targetId,
-    Object? target = _Undefined,
+    _isc.UuidValue? sourceId,
+    _ik3dvlmp.EntityTmpl? source = const _UndefinedEntityTmplLink$source(),
+    _isc.UuidValue? targetId,
+    _ik3dvlmp.EntityTmpl? target = const _UndefinedEntityTmplLink$source(),
   }) {
     return EntityTmplLink(
-      id: id is _i1.UuidValue? ? id : this.id,
+      id: id is _isc.UndefinedSentinel ? this.id : id,
       name: name ?? this.name,
       description: description is String? ? description : this.description,
       orderIdx: orderIdx ?? this.orderIdx,
       sourceId: sourceId ?? this.sourceId,
-      source: source is _i2.EntityTmpl? ? source : this.source?.copyWith(),
+      source: source is _isc.UndefinedSentinel
+          ? this.source?.copyWith()
+          : source,
       targetId: targetId ?? this.targetId,
-      target: target is _i2.EntityTmpl? ? target : this.target?.copyWith(),
+      target: target is _isc.UndefinedSentinel
+          ? this.target?.copyWith()
+          : target,
     );
   }
 }

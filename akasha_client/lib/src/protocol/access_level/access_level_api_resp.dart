@@ -10,11 +10,12 @@
 // ignore_for_file: invalid_use_of_internal_member
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../access_level/access_level.dart' as _i2;
-import 'package:akasha_client/src/protocol/protocol.dart' as _i3;
+import 'package:akasha_client/src/protocol/protocol.dart' as _ivaz2sz9;
+import 'package:serverpod_client/serverpod_client.dart' as _isc;
+import '../access_level/access_level.dart' as _il5mdsd7;
 
-abstract class AccessLevelApiResponse implements _i1.SerializableModel {
+abstract class AccessLevelApiResponse
+    implements _isc.SerializableModel, _isc.ProtocolSerialization {
   AccessLevelApiResponse._({
     required this.success,
     this.data,
@@ -24,7 +25,7 @@ abstract class AccessLevelApiResponse implements _i1.SerializableModel {
 
   factory AccessLevelApiResponse({
     required bool success,
-    _i2.AccessLevel? data,
+    _il5mdsd7.AccessLevel? data,
     String? errorCode,
     String? errorMessage,
   }) = _AccessLevelApiResponseImpl;
@@ -33,10 +34,10 @@ abstract class AccessLevelApiResponse implements _i1.SerializableModel {
     Map<String, dynamic> jsonSerialization,
   ) {
     return AccessLevelApiResponse(
-      success: _i1.BoolJsonExtension.fromJson(jsonSerialization['success']),
+      success: _isc.BoolJsonExtension.fromJson(jsonSerialization['success']),
       data: jsonSerialization['data'] == null
           ? null
-          : _i3.Protocol().deserialize<_i2.AccessLevel>(
+          : _ivaz2sz9.Protocol().deserialize<_il5mdsd7.AccessLevel>(
               jsonSerialization['data'],
             ),
       errorCode: jsonSerialization['errorCode'] as String?,
@@ -46,7 +47,7 @@ abstract class AccessLevelApiResponse implements _i1.SerializableModel {
 
   bool success;
 
-  _i2.AccessLevel? data;
+  _il5mdsd7.AccessLevel? data;
 
   String? errorCode;
 
@@ -54,10 +55,10 @@ abstract class AccessLevelApiResponse implements _i1.SerializableModel {
 
   /// Returns a shallow copy of this [AccessLevelApiResponse]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   AccessLevelApiResponse copyWith({
     bool? success,
-    _i2.AccessLevel? data,
+    _il5mdsd7.AccessLevel? data = const _UndefinedAccessLevelApiResponse$data(),
     String? errorCode,
     String? errorMessage,
   });
@@ -73,17 +74,33 @@ abstract class AccessLevelApiResponse implements _i1.SerializableModel {
   }
 
   @override
+  Map<String, dynamic> toJsonForProtocol() {
+    return {
+      '__className__': 'AccessLevelApiResponse',
+      'success': success,
+      if (data != null) 'data': data?.toJsonForProtocol(),
+      if (errorCode != null) 'errorCode': errorCode,
+      if (errorMessage != null) 'errorMessage': errorMessage,
+    };
+  }
+
+  @override
   String toString() {
-    return _i1.SerializationManager.encode(this);
+    return _isc.SerializationManager.encode(this);
   }
 }
 
 class _Undefined {}
 
+class _UndefinedAccessLevelApiResponse$data extends _isc.UndefinedSentinel
+    implements _il5mdsd7.AccessLevel {
+  const _UndefinedAccessLevelApiResponse$data();
+}
+
 class _AccessLevelApiResponseImpl extends AccessLevelApiResponse {
   _AccessLevelApiResponseImpl({
     required bool success,
-    _i2.AccessLevel? data,
+    _il5mdsd7.AccessLevel? data,
     String? errorCode,
     String? errorMessage,
   }) : super._(
@@ -95,17 +112,17 @@ class _AccessLevelApiResponseImpl extends AccessLevelApiResponse {
 
   /// Returns a shallow copy of this [AccessLevelApiResponse]
   /// with some or all fields replaced by the given arguments.
-  @_i1.useResult
+  @_isc.useResult
   @override
   AccessLevelApiResponse copyWith({
     bool? success,
-    Object? data = _Undefined,
+    _il5mdsd7.AccessLevel? data = const _UndefinedAccessLevelApiResponse$data(),
     Object? errorCode = _Undefined,
     Object? errorMessage = _Undefined,
   }) {
     return AccessLevelApiResponse(
       success: success ?? this.success,
-      data: data is _i2.AccessLevel? ? data : this.data?.copyWith(),
+      data: data is _isc.UndefinedSentinel ? this.data?.copyWith() : data,
       errorCode: errorCode is String? ? errorCode : this.errorCode,
       errorMessage: errorMessage is String? ? errorMessage : this.errorMessage,
     );
